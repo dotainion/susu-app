@@ -1,9 +1,11 @@
 import { IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonIcon, IonItem, IonItemDivider, IonLabel, IonList, IonLoading, IonPage, IonRow } from '@ionic/react';
-import { chevronDownOutline, personOutline, settingsOutline } from 'ionicons/icons';
-import React, { useRef, useState } from 'react';
+import { chevronDownOutline, personOutline } from 'ionicons/icons';
+import React, { useState } from 'react';
 import { Header } from '../components/Header';
 import { ManageMember } from '../components/ManageMember';
 import { useStore } from '../stateContext/AuthContext';
+
+
 
 
 export const Manage = () =>{
