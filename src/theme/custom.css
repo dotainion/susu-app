@@ -1,0 +1,216 @@
+.page{
+    background-color: rgb(187, 205, 209);
+    --ion-background-color: rgb(187, 205, 209);
+}
+.page-container{
+    height: 88vh;
+    overflow-y: auto;
+    background-color: white;
+    --ion-background-color: white;
+}
+.creds-container{
+    background-color: white;
+    --ion-background-color: white;
+}
+.header{
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+.sub-header{
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+.mini-header{
+    font-weight: bold;
+}
+.mini-sub-header{
+
+}
+.error{
+    color: red;
+    height: 25px;
+    text-align: center;
+}
+.success{
+    color: green;
+    height: 25px;
+    text-align: center;
+}
+.backdrop{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background: transparent;
+}
+.backdrop-color{
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.35);
+}
+.float-right{
+    position: absolute;
+    z-index: 999;
+    right: 10px;
+    padding: 0;
+    background-color: white;
+    box-shadow: 1px 1px 2px gray;
+}
+.floating-center{
+    position: absolute;
+    z-index: 9999999;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%,-50%,0);
+}
+.float-center-left{
+    position: absolute;
+    z-index: 9999999;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+}
+.flexed{
+    display: flex;
+}
+.pointer:hover{
+    cursor: pointer;
+    background-color: lightgray;
+}
+.pointer-link{
+    color: rgb(8, 74, 139);
+}
+.pointer-link:hover{
+    color: gray;
+    cursor: pointer;
+    display: inline;
+    text-decoration: underline;
+}
+.list-block{
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: block;
+}
+.item-list-container{
+    user-select: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-bottom: 1px solid gray;
+}
+.spinner{
+    font-size: 30px;
+    animation: spin 1s infinite linear;
+}
+.input-search{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 25px;
+    border: 1px solid lightgray;
+}
+.none-ion-input{
+    outline: none;
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 20px;
+    margin-right: 20px;
+    border: 1px solid lightgray;
+}
+.item-select-label{
+    position: absolute;
+    z-index: -1;
+}
+.item-select{
+    width: 100%;
+    padding-top: 35px;
+    padding-bottom: 10px;
+    background: transparent;
+    outline: none;
+    border: none;
+    cursor: text;
+}
+.price-input::before{
+    content: "$";
+}
+.round{
+    position: relative;
+    width: 70px;
+    height: 70px;
+    padding: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: green;
+}
+.round:active{
+    box-shadow: 2px 2px 20px lightblue;
+}
+.round-inner{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    user-select: none;
+    border: 1px solid lightblue;
+}
+.item-center{
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+.pad-l-r{
+    padding: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.close{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 25px;
+    z-index: 999999;
+}
+.close:hover{
+    color: red;
+}
+.welcome-logo{
+    width: 80%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+.groups-item{
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    padding: 8px;
+    border-radius: 50px;
+    text-align: center;
+    border: 1px solid lightgray;
+    box-shadow: 4px 4px 10px lightgray;
+    user-select: none;
+}
+.groups-item-inner{
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+    border: 1px solid lightblue;
+    box-shadow: 2px 2px 5px lightgray;
+}
+
+ion-header{
+    background-color: white;
+    --ion-background-color: white;
+}
+ion-menu{
+    width: 0px;
+}
+@media screen and (max-width:767px){
+    ion-menu{
+        width: 100%;
+    }
+}
+@keyframes spin{
+    from{
+        transform: rotate(0deg);
+    }to{
+        transform: rotate(360deg);
+    }
+}
