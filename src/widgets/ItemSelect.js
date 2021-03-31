@@ -1,4 +1,4 @@
-import { IonItem, IonLabel, useIonViewWillEnter, useIonViewWillLeave } from '@ionic/react';
+import { IonItem, IonLabel, useIonViewDidEnter, useIonViewWillEnter, useIonViewWillLeave } from '@ionic/react';
 import React, { useEffect, useRef, useState } from 'react';
 
 
@@ -27,11 +27,11 @@ export const ItemSelect = ({itemSelectRef, options, label}) =>{
     useIonViewWillLeave(()=>{
         clearInterval(intervalLoop.current);
     });
-    useIonViewWillEnter(()=>{
+    useIonViewDidEnter(()=>{
         intervalLoop.current = setInterval(() =>{
-            if (!itemSelectRef.current.value){
+            if (!itemSelectRef.current?.value){
                 if (document.activeElement !== itemSelectRef.current){
-                    focusOut();
+                    try{focusOut()}catch{};
                 }
             }
         }, 400);

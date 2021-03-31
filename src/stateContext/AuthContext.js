@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import { auth } from '../config/FirebaseConfig';
-import { addMember, getMember, getRequest, getSusuMembers } from '../database/FirestoreDb';
+import { addMember, getMember, getMyGroup, getRequest, getSusuMembers } from '../database/FirestoreDb';
 import { routes } from '../global/Routes';
 
 
@@ -10,8 +10,6 @@ const AuthContext = createContext();
 export const useStore = () =>useContext(AuthContext);
 
 export const AuthContextProvider = ({children}) =>{
-    const history = useHistory();
-
     const [loading, setLoading] = useState(true);
     const [isLogin, setIsLogin] = useState();
     const [user, setUser] = useState({});
@@ -46,18 +44,33 @@ export const AuthContextProvider = ({children}) =>{
     }
     const signOut = async() =>{
         await auth.signOut();
-        history.push(routes.login);
+        setUser(null);
+        setIsLogin(null);
     }
     const recover = async(email) =>{
-        return await auth.sendPasswordResetEmail(email);
+        try{
+            await auth.sendPasswordResetEmail(email);
+            return true;
+        }catch(err){
+            console.log(err);
+            return {error:err?.message};
+        }
     }
 
-    //get my susu groups
+    //get the susu inclued groups in
     const initSusuGroups = async() =>{
         if (Object.keys(user || {}).length > 0){
             let groups = [];
             for (let id of user?.group || []){
-                groups.push(await getMember(id));
+                let myGroupAdmin = await getMember(id);
+                let myGroup = await getMyGroup(id);
+                for (let group of myGroup?.members || []){
+                    if (group?.id === user?.id){
+                        myGroupAdmin["deposit"] = group?.deposit || [];
+                        break;
+                    }
+                }
+                groups.push(myGroupAdmin);
             }
             setSusuGroups(groups);
         }

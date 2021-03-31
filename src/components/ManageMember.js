@@ -3,12 +3,14 @@ import { closeOutline } from 'ionicons/icons';
 import React, { useEffect, useRef, useState } from 'react';
 import { updateSusuMembers } from '../database/FirestoreDb';
 import { useStore } from '../stateContext/AuthContext';
+import { tools } from '../tools/Tools';
 
 
 
 export const ManageMember = ({isOpen, onClose, record}) =>{
     const { user, susuMembers, initSusuMembers } = useStore();
 
+    const [success, setSuccess] = useState("");
     const [lastDeposit, setLastDeposit] = useState("");
     const [totalDeposit, setTotalDeposit] = useState("");
     const [showDepositList, setShowDepositList] = useState([]);
@@ -34,6 +36,9 @@ export const ManageMember = ({isOpen, onClose, record}) =>{
             }
             index ++;
         }
+        setSuccess(`Deposit of $${depositRef.current.value} was applied`)
+        depositRef.current.value = "";
+        setShowApplyDeposit(false);
     }
     const initAllDepositList = () =>{
         for (let aRecord of susuMembers || []){
@@ -47,18 +52,14 @@ export const ManageMember = ({isOpen, onClose, record}) =>{
                 setTotalDeposit(total);
                 //set last depost
                 const lastDep = aRecord?.deposit?.[aRecord?.deposit?.length -1];
-                if (lastDep?.date) setLastDeposit(`${handleDate(lastDep?.date)}, $${lastDep?.amount}`);
+                if (lastDep?.date) setLastDeposit(`${tools.handleDate(lastDep?.date)}, $${lastDep?.amount}`);
+                break;
             }
         }    
     }
     const onView = () =>{
         initAllDepositList();
     };
-    const handleDate = (date) =>{
-        const newD = new Date(date).toDateString();
-        const newT = new Date(date).toLocaleTimeString();
-        return newD +" - "+ newT;
-    }
     const toggleTotalDeposit = () =>{
         if (showTotalDeposit.state) setShowTotalDeposit({state:false,text:"Deposits"});
         else setShowTotalDeposit({state:true,text:"Close Deposits"});
@@ -76,6 +77,7 @@ export const ManageMember = ({isOpen, onClose, record}) =>{
                 <IonList class="sub-header" lines="none">
                     <IonLabel>Account of <b style={{color:"dodgerblue"}}>{record?.info?.name}</b></IonLabel>
                 </IonList>
+                <div className="success">{success}</div>
                 <IonContent>
                     <IonCardContent>
                         <IonItemDivider>Apply Deposit</IonItemDivider>
@@ -102,7 +104,7 @@ export const ManageMember = ({isOpen, onClose, record}) =>{
                             {
                                 showDepositList.map((deposit, key)=>(
                                     <IonList class="item-list-container pointer" key={key}>
-                                        <IonLabel style={{float:"left"}}>{handleDate(deposit?.date)}</IonLabel>
+                                        <IonLabel style={{float:"left"}}>{tools.handleDate(deposit?.date)}</IonLabel>
                                         <IonLabel style={{float:"right"}}>${deposit?.amount}</IonLabel>
                                     </IonList>
                                 ))

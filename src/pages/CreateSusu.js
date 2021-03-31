@@ -59,7 +59,7 @@ export const CreateSusu = () =>{
                                     <div className="success">{success}</div>
                                     <IonItemDivider>Requirements</IonItemDivider>
                                     <IonItem>
-                                        <IonLabel position="floating">Group Name</IonLabel>
+                                        <IonLabel position="floating">Name of Group</IonLabel>
                                         <IonInput ref={nameRef}/>
                                     </IonItem>
                                     <ItemSelect

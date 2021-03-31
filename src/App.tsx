@@ -1,4 +1,4 @@
-import { Redirect, Route } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, IonSplitPane } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 
@@ -49,34 +49,38 @@ const App: React.FC = () => {
           <IonSplitPane contentId="menu">
             <Menu />
             <IonRouterOutlet id="menu">
-              <Route exact path={routes.settings}>
-                <AuthValidate component={<Settings />}/>
-              </Route>
-              <Route exact path={routes.createSusu}>
-                <AuthValidate component={<CreateSusu />}/>
-              </Route>
-              <Route exact path={routes.joinSusu}>
-                <AuthValidate component={<JoinSusu />}/>
-              </Route>
-              <Route exact path={routes.request}>
-                <AuthValidate component={<Requests />}/>
-              </Route>
-              <Route exact path={routes.manage}>
-                <AuthValidate component={<Manage />}/>
-              </Route>
-              <Route exact path={routes.welcome}>
-                <AuthValidate component={<Welcome />}/>
-              </Route>
-              <Route exact path={routes.myAccount}>
-                <AuthValidate component={<MyAccount />}/>
-              </Route>
-              <Route render={()=><Page404 />}/>
+              <Switch>
+                <Route exact path={routes.settings}>
+                  <AuthValidate component={<Settings />}/>
+                </Route>
+                <Route exact path={routes.createSusu}>
+                  <AuthValidate component={<CreateSusu />}/>
+                </Route>
+                <Route exact path={routes.joinSusu}>
+                  <AuthValidate component={<JoinSusu />}/>
+                </Route>
+                <Route exact path={routes.request}>
+                  <AuthValidate component={<Requests />}/>
+                </Route>
+                <Route exact path={routes.manage}>
+                  <AuthValidate component={<Manage />}/>
+                </Route>
+                <Route exact path={routes.welcome}>
+                  <AuthValidate component={<Welcome />}/>
+                </Route>
+                <Route exact path={routes.myAccount}>
+                  <AuthValidate component={<MyAccount />}/>
+                </Route>
+                <Route render={()=><Page404 />}/>
+              </Switch>
             </IonRouterOutlet>
           </IonSplitPane>
-          <Route exact path={routes.defaults} render={()=><Redirect to={routes.login}/>}/>
-          <Route exact path={routes.register} component={Register}/>
-          <Route exact path={routes.recover} component={Recover}/>
-          <Route exact path={routes.login} component={Login}/>
+          <Switch>
+            <Route exact path={routes.defaults} render={()=><Redirect to={routes.login}/>}/>
+            <Route exact path={routes.register} component={Register}/>
+            <Route exact path={routes.recover} component={Recover}/>
+            <Route exact path={routes.login} component={Login}/>
+          </Switch>
         </IonReactRouter>
       </AuthContextProvider>
     </IonApp>

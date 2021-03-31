@@ -48,7 +48,7 @@ export const Requests = () =>{
                 isOpen={showPopover.state}
                 onDidDismiss={() => setShowPopover({state:false,data:null})}
                 cssClass='my-custom-class'
-                header={'Susu Reques'}
+                header={'Susu Request'}
                 subHeader={'Requsting to be part of your susu.'}
                 message={'Click outside of this box to if you unable to make a decision now.'}
                 buttons={[

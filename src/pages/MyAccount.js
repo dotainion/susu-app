@@ -1,8 +1,9 @@
-import { IonButton, IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonIcon, IonItem, IonItemDivider, IonLabel, IonList, IonPage, IonRow } from '@ionic/react';
+import { IonAlert, IonButton, IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonIcon, IonItem, IonItemDivider, IonLabel, IonList, IonPage, IonRow } from '@ionic/react';
 import { constructOutline, settingsOutline } from 'ionicons/icons';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Header } from '../components/Header';
 import { useStore } from '../stateContext/AuthContext';
+import { tools } from '../tools/Tools';
 
 
 export const MyAccount = () =>{
@@ -10,10 +11,25 @@ export const MyAccount = () =>{
 
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
+    const [showAlert, setShowAlert] = useState(false);
 
+    const onMakePayment = () =>{
+        setShowAlert(true);
+    };
     return(
         <IonPage className="page">
             <Header/>
+
+            <IonAlert
+                isOpen={showAlert}
+                onDidDismiss={() => setShowAlert({state:false,data:null})}
+                cssClass='my-custom-class'
+                header={'Alert!!'}
+                subHeader={'Cannot continue.'}
+                message={'Payment is not yet available in your area.'}
+                buttons={["okay"]}
+            />
+
             <IonContent>
                 <IonGrid>
                     <IonRow>
@@ -23,43 +39,43 @@ export const MyAccount = () =>{
                                     <IonItem class="header" lines="none">
                                         <IonLabel>Account</IonLabel>
                                     </IonItem>
-                                    <IonList class="sub-header">
-                                        <IonLabel>My account</IonLabel>
-                                    </IonList>
+                                    <div className="sub-header">My account</div>
                                     <div className="error">{error}</div>
                                     <div className="success">{success}</div>
                                     <IonList>
-                                        <IonItemDivider>Last Transactions</IonItemDivider>
-                                        <IonItem lines="full">
-
-                                        </IonItem>
-                                        <IonItemDivider>Total Transactions</IonItemDivider>
-                                        <IonItem lines="full">
-
-                                        </IonItem>
-                                        <IonItemDivider>breakdown of transactions</IonItemDivider>
-                                        <IonItem lines="full">
-
-                                        </IonItem>
-                                        <IonItemDivider>Make Deposit</IonItemDivider>
-                                        <IonItem lines="full">
-                                            <IonButton fill="outline" slot="start">Payment</IonButton>
-                                        </IonItem>
-                                        <div style={{marginTop:"20px",paddingBottom:"5px",textAlign:"center",borderBottom:"1px solid lightgray"}}><b>My Susu Groups</b></div>
-                                        <IonList style={{textAlign:"center"}}>
+                                        <IonItemDivider color="primary"><b>My Susu Groups</b></IonItemDivider>
+                                        <IonList>
                                             {
+                                                susuGroups.length?
                                                 susuGroups.map((group, key)=>(
-                                                    <IonCard class="groups-item" key={key}>
-                                                        <div className="groups-item-inner">
-                                                            {console.log(group)}
-                                                            <IonLabel class="list-block"><b>{group?.susuName}</b></IonLabel>
-                                                            <IonLabel class="list-block">{group?.city}</IonLabel>
-                                                            <IonLabel class="list-block">{group?.address}</IonLabel>
-                                                            <IonLabel class="list-block">{group?.number}</IonLabel>
-                                                            <IonLabel class="list-block">{group?.email}</IonLabel>
+                                                    <IonList class="item-list-container pointer" key={key}>
+                                                        <div style={{color:"dodgerblue"}}>
+                                                            <b>{group?.susuName}</b>
                                                         </div>
-                                                    </IonCard>
-                                                ))
+                                                        <div>{group?.city}</div>
+                                                        <div>{group?.address}</div>
+                                                        <div>{group?.number}</div>
+                                                        <div>{group?.email}</div>
+                                                        <IonList class="mini-list-scroll">
+                                                            <IonItemDivider color="medium">breakdown of transactions</IonItemDivider>
+                                                            {
+                                                                group?.deposit?.map((dep, key)=>(
+                                                                    <IonList class="item-list-container" key={key}>
+                                                                        <IonLabel style={{float:"left"}}>{tools.handleDate(dep?.date)}</IonLabel>
+                                                                        <IonLabel style={{float:"right"}}>${dep?.amount}</IonLabel>
+                                                                    </IonList>
+                                                                ))
+                                                            }
+                                                        </IonList>
+                                                        <IonItemDivider color="medium">Make Deposit</IonItemDivider>
+                                                        <IonItem lines="full">
+                                                            <IonButton fill="outline" onClick={()=>onMakePayment(group)} slot="start">Payment</IonButton>
+                                                        </IonItem>
+                                                    </IonList>
+                                                )):
+                                                <IonList class="item-list-container pointer">
+                                                    <IonLabel>Not in any group</IonLabel>
+                                                </IonList>
                                             }
                                         </IonList>
                                     </IonList>

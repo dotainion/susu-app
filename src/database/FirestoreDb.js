@@ -2,14 +2,14 @@ import { deleteDatabase } from "workbox-core/_private";
 import { addData, deleteData, getData, queryEqualBy1, queryEqualBy2, updateData } from "./CollectionsDb"
 
 const collection = {
-    members: "users",
+    users: "users",
     requests: "requests",
-    susuMembers: "susuMembers",
+    groups: "groups",
 }
 
 export const addMember = async(data,uid) =>{
     try{
-        await addData(collection.members,data,uid);
+        await addData(collection.users,data,uid);
     }catch(error){
         console.log(error);
     }
@@ -17,7 +17,7 @@ export const addMember = async(data,uid) =>{
 
 export const getMember = async(uid) =>{
     try{
-        return await getData(collection.members,uid);
+        return await getData(collection.users,uid);
     }catch(error){
         console.log(error);
         return {};
@@ -26,7 +26,7 @@ export const getMember = async(uid) =>{
 
 export const getSusuMembers = async(uid) =>{
     try{
-        return await getData(collection.susuMembers,uid);
+        return await getData(collection.groups,uid);
     }catch(error){
         console.log(error);
         return {};
@@ -35,7 +35,7 @@ export const getSusuMembers = async(uid) =>{
 
 export const updateSusuMembers = async(data, uid) =>{
     try{
-        return await updateData(collection.susuMembers,data,uid);
+        return await updateData(collection.groups,data,uid);
     }catch(error){
         console.log(error);
         return {};
@@ -57,7 +57,7 @@ export const sendRequest = async(data) =>{
 export const acceptRequest = async(data, uid) =>{
     console.log(data)
     try{
-        let records = await getData(collection.susuMembers,uid);
+        let records = await getData(collection.groups,uid);
         for (let r of records?.members || []){
             if (r?.id === data?.id) return false;
         }
@@ -66,9 +66,9 @@ export const acceptRequest = async(data, uid) =>{
         delete data["group"];
         let newRec = {members: records?.members || [data]};
         newRec?.push?.(data);
-        await addData(collection.susuMembers, newRec, uid);
+        await addData(collection.groups, newRec, uid);
         await declineRequest(requestId);
-        await addGroud(data?.id, uid)
+        await addGroup(data?.id, uid)
         return true;
     }catch(error){
         console.log(error);
@@ -76,12 +76,13 @@ export const acceptRequest = async(data, uid) =>{
     }
 }
 
-const addGroud = async(memberId, groupId) =>{
+//add the goup user has join in the user member account
+const addGroup = async(memberId, groupId) =>{
     try{
-        const cUser = await getData(collection.members,memberId);
+        const cUser = await getData(collection.users,memberId);
         let cGroup = cUser?.group || [];
         cGroup.push(groupId);
-        await updateData(collection.members,{group:cGroup},memberId);
+        await updateData(collection.users,{group:cGroup},memberId);
     }catch{
 
     }
@@ -117,12 +118,12 @@ export const getSusuAccounts = async(queryvalue) =>{
     console.log(queryvalue)
     let results = [];
     try{
-        const email = await queryEqualBy2(collection.members,"start",true,"email",queryvalue);
-        const number = await queryEqualBy2(collection.members,"start",true,"number",queryvalue);
-        const name = await queryEqualBy2(collection.members,"start",true,"name",queryvalue);
-        const city = await queryEqualBy2(collection.members,"start",true,"city",queryvalue);
-        const address = await queryEqualBy2(collection.members,"start",true,"address",queryvalue);
-        const susuName = await queryEqualBy2(collection.members,"start",true,"susuName",queryvalue);
+        const email = await queryEqualBy2(collection.users,"start",true,"email",queryvalue);
+        const number = await queryEqualBy2(collection.users,"start",true,"number",queryvalue);
+        const name = await queryEqualBy2(collection.users,"start",true,"name",queryvalue);
+        const city = await queryEqualBy2(collection.users,"start",true,"city",queryvalue);
+        const address = await queryEqualBy2(collection.users,"start",true,"address",queryvalue);
+        const susuName = await queryEqualBy2(collection.users,"start",true,"susuName",queryvalue);
         for (let e of email) results.push(e);
         for (let r of number) results.push(r);
         for (let n of name) results.push(n);
@@ -136,14 +137,33 @@ export const getSusuAccounts = async(queryvalue) =>{
     }
 }
 
+export const getMyGroup = async(uid) =>{
+    try{
+        return await getData(collection.groups,uid);
+    }catch(error){
+        console.log(error);
+        return false;
+    }
+}
+
 export const startSusu = async(data, uid) =>{
     try{
         const cUser = await getMember(uid);
         if (!cUser?.start){
-            await updateData(collection.members, data, uid);
+            await updateData(collection.users, data, uid);
             return true;
         }
         return false;
+    }catch(error){
+        console.log(error);
+        return false;
+    }
+}
+
+export const rememberCredsDb = async(data, uid) =>{
+    try{
+        await updateData(collection.users, data, uid);
+        return true;
     }catch(error){
         console.log(error);
         return false;

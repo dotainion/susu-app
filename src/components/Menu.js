@@ -4,6 +4,7 @@ import { useHistory } from 'react-router';
 import { routes } from '../global/Routes';
 import { cogOutline, constructOutline, informationOutline, peopleOutline, personOutline, personSharp, searchOutline, settings, settingsOutline, stopwatchOutline } from 'ionicons/icons';
 import { useStore } from '../stateContext/AuthContext';
+import { tools } from '../tools/Tools';
 
 
 
@@ -50,8 +51,8 @@ export const Menu = () => {
         <IonMenu hidden={!isLogin} contentId="menu" type="overlay">
             <IonContent>
                 <IonList id="inbox-list">
-                <IonListHeader>Hi, {user?.name?.split(" ")?.[0]}</IonListHeader>
-                <IonNote>NAWASA authority</IonNote>
+                <IonListHeader>Hi, {tools.capitalize(user?.name?.split(" ")?.[0] || "")}</IonListHeader>
+                <IonNote>The SUSU-APP</IonNote>
                 {pages.map((content, index) =>(
                         <IonMenuToggle autoHide={false} key={index}>
                             <IonItem className="menuItemContainer" routerLink={content.url} routerDirection="none" lines="none">

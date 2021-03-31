@@ -21,7 +21,7 @@ export const Settings = () =>{
                                         <IonLabel>Settings</IonLabel>
                                     </IonItem>
                                     <IonList class="sub-header">
-                                        <IonIcon icon={constructOutline}/>
+                                        <IonIcon style={{fontSize:"50px"}} icon={constructOutline}/>
                                     </IonList>
                                     <div className="error">{error}</div>
                                     <div className="success">{success}</div>

@@ -85,6 +85,10 @@ export const Register = () =>{
         }
     }
 
+    const onEnterKeyPress = (e) =>{
+        if (e.key === "Enter") onSubmit();
+    }
+    
     const toggle = (cmd) =>{
         if (cmd.includes("first")) setInputToggle({first:true,second:false,third:false});
         if (cmd.includes("second")) setInputToggle({first:false,second:true,third:false});
@@ -98,7 +102,7 @@ export const Register = () =>{
                 <IonGrid>
                     <IonRow>
                         <IonCol size-md="4" offset-md="7">
-                            <IonCard class="creds-container">
+                            <IonCard class="creds-container" onKeyPress={onEnterKeyPress}>
                                 <IonCardContent>
                                     <IonItem class="header" lines="none">
                                         <IonLabel>SUSU</IonLabel>
@@ -164,7 +168,7 @@ export const Register = () =>{
                                             </IonItem>
                                         </div>
                                         <IonItem>
-                                            <span className="pointer-link" onClick={()=>history.push(routes.login)} color="primary" slot="start">Login Instead</span>
+                                            <span className="pointer-link" onClick={()=>history.push(routes.login)} style={{color:"rgb(29, 134, 29)"}}  slot="start">Login Instead</span>
                                         </IonItem>
                                         <IonItem>
                                             <IonButton hidden={!inputToggle.second} fill="outline" onClick={()=>toggle("first")} color="primary" slot="start">Back1</IonButton>

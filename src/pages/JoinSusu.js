@@ -93,7 +93,7 @@ export const JoinSusu = () =>{
                                         <IonLabel>Search available susu's</IonLabel>
                                     </IonItem>
                                     <IonList class="sub-header">
-                                        <IonLabel>Search susu by contact, user name, susu name, city and address.</IonLabel>
+                                        <IonLabel>Search susu by phone number, email, user name, susu name, city and address.</IonLabel>
                                     </IonList>
                                     <div className="error">{error}</div>
                                     <div className="success">{success}</div>
