@@ -54,7 +54,7 @@ export const Login = () =>{
         <IonPage className="page">
             <Loader isOpen={spinner}/>
             <IonContent>
-                <IonGrid>
+                <IonGrid class="full-height">
                     <IonRow>
                         <IonCol size-md="4" offset-md="7">
                             <IonCard class="creds-container" onKeyPress={onEnterKeyPress}>
@@ -85,7 +85,7 @@ export const Login = () =>{
                                         <span className="pointer-link" style={{color:"rgb(29, 134, 29)"}} onClick={()=>history.push(routes.register)} slot="start">Create Account</span>
                                     </IonItem>
                                     <IonItem lines="none">
-                                        <IonButton slot="end" color="medium" onClick={onSubmit} fill="outline">Login</IonButton>
+                                        <IonButton slot="end" onClick={onSubmit} fill="outline">Login</IonButton>
                                     </IonItem>
                                 </IonCardContent>
                             </IonCard>

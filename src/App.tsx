@@ -1,5 +1,5 @@
 import { Redirect, Route, Switch } from 'react-router-dom';
-import { IonApp, IonRouterOutlet, IonSplitPane } from '@ionic/react';
+import { IonApp, IonButton, IonRouterOutlet, IonSplitPane } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 
 /* Core CSS required for Ionic components to work properly */
@@ -38,6 +38,7 @@ import { Recover } from './authenticate/Recover';
 import { Welcome } from './pages/Welcome';
 import { MyAccount } from './pages/MyAccount';
 import { Page404 } from './error/Page404';
+import { Help } from './pages/Help';
 
 
 
@@ -70,6 +71,9 @@ const App: React.FC = () => {
                 </Route>
                 <Route exact path={routes.myAccount}>
                   <AuthValidate component={<MyAccount />}/>
+                </Route>
+                <Route exact path={routes.help}>
+                  <AuthValidate component={<Help />}/>
                 </Route>
                 <Route render={()=><Page404 />}/>
               </Switch>

@@ -2,7 +2,7 @@ import {IonButton, IonContent,IonIcon,IonItem,IonLabel,IonList,IonListHeader,Ion
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import { routes } from '../global/Routes';
-import { cogOutline, constructOutline, informationOutline, peopleOutline, personOutline, personSharp, searchOutline, settings, settingsOutline, stopwatchOutline } from 'ionicons/icons';
+import { cogOutline, constructOutline, helpOutline, informationOutline, peopleOutline, personOutline, personSharp, searchOutline, settings, settingsOutline, stopwatchOutline } from 'ionicons/icons';
 import { useStore } from '../stateContext/AuthContext';
 import { tools } from '../tools/Tools';
 
@@ -39,8 +39,12 @@ export const Menu = () => {
             icon: settingsOutline,
             iconColor: "",
             url: routes.manage
-        }
-        ,{
+        },{
+            title: "Help",
+            icon: helpOutline,
+            iconColor: "",
+            url: routes.help
+        },{
             title: "Settings",
             icon: constructOutline,
             iconColor: "",

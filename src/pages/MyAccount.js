@@ -2,12 +2,13 @@ import { IonAlert, IonButton, IonCard, IonCardContent, IonCol, IonContent, IonGr
 import { constructOutline, settingsOutline } from 'ionicons/icons';
 import React, { useEffect, useState } from 'react';
 import { Header } from '../components/Header';
+import { routes } from '../global/Routes';
 import { useStore } from '../stateContext/AuthContext';
 import { tools } from '../tools/Tools';
 
 
 export const MyAccount = () =>{
-    const { susuGroups } = useStore();
+    const { user, susuGroups } = useStore();
 
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
@@ -31,7 +32,7 @@ export const MyAccount = () =>{
             />
 
             <IonContent>
-                <IonGrid>
+                <IonGrid class="background-image">
                     <IonRow>
                         <IonCol size-md="8" offset-md="2">
                             <IonCard class="page-container">
@@ -43,7 +44,27 @@ export const MyAccount = () =>{
                                     <div className="error">{error}</div>
                                     <div className="success">{success}</div>
                                     <IonList>
-                                        <IonItemDivider color="primary"><b>My Susu Groups</b></IonItemDivider>
+                                        <IonItemDivider color="primary"><b>My Susu</b></IonItemDivider>
+                                        <IonList hidden={!user?.start}>
+                                            <div className="tag-container">
+                                                <div>
+                                                    <div className="tag-in">Susu Name</div>
+                                                    <div className="tag-out">Cost Per Month</div>
+                                                    <div className="tag-in">Due Per Month</div>
+                                                    <div className="tag-out">Duration</div>
+                                                </div>
+                                                <div>
+                                                    <div className="tag-in">{user?.susuName}</div>
+                                                    <div className="tag-out">{user?.costPerMonth}</div>
+                                                    <div className="tag-in">{user?.dueDate}</div>
+                                                    <div className="tag-out">{user?.duration}</div>
+                                                </div>
+                                            </div>
+                                            <IonButton hidden={user?.start} routerLink={routes.createSusu} fill="outline" size="small">Start a susu group</IonButton>
+                                        </IonList>
+                                    </IonList>
+                                    <IonList>
+                                        <IonItemDivider color="primary"><b>Groups am in</b></IonItemDivider>
                                         <IonList>
                                             {
                                                 susuGroups.length?

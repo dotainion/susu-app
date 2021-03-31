@@ -180,12 +180,32 @@
     max-height: 400px;
     overflow-y: auto;
 }
+.full-height{
+    height: 100vh
+}
+.tag-container{
+    width: 100%;
+    display: flex;
+    color: black;
+}
+.tag-container div{
+    width: 100%;
+}
+.tag-container div div{
+    padding-left: 5px;
+}
+.tag-in{
+    background-color: lightblue;
+}
+.tag-out{
+    background-color: rgb(231, 231, 231);
+}
 
-
-
-
-
-
+ion-grid{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(../images/beach5.jpg);
+}
 ion-header{
     background-color: white;
     --ion-background-color: white;

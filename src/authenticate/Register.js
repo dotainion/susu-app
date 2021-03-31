@@ -88,7 +88,7 @@ export const Register = () =>{
     const onEnterKeyPress = (e) =>{
         if (e.key === "Enter") onSubmit();
     }
-    
+
     const toggle = (cmd) =>{
         if (cmd.includes("first")) setInputToggle({first:true,second:false,third:false});
         if (cmd.includes("second")) setInputToggle({first:false,second:true,third:false});
@@ -99,7 +99,7 @@ export const Register = () =>{
         <IonPage className="page">
             <Loader isOpen={spinner}/>
             <IonContent>
-                <IonGrid>
+                <IonGrid class="full-height">
                     <IonRow>
                         <IonCol size-md="4" offset-md="7">
                             <IonCard class="creds-container" onKeyPress={onEnterKeyPress}>

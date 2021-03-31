@@ -42,7 +42,7 @@ export const Recover = () =>{
         <IonPage className="page">
             <Loader isOpen={spinner}/>
             <IonContent>
-                <IonGrid>
+                <IonGrid class="full-height">
                     <IonRow>
                         <IonCol size-md="4" offset-md="7">
                             <IonCard class="creds-container" onKeyPress={onEnterKeyPress}>

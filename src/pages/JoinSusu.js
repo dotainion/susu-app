@@ -67,6 +67,9 @@ export const JoinSusu = () =>{
         else setSuccess("Request sent");
         setShowLoader(false);
     }
+    const onEnterKeyPress = (e) =>{
+        if (e.key === "Enter") search();
+    }
     return(
         <IonPage className="page">
             <Header/>
@@ -87,7 +90,7 @@ export const JoinSusu = () =>{
                 <IonGrid>
                     <IonRow>
                         <IonCol size-md="8" offset-md="2">
-                            <IonCard class="page-container">
+                            <IonCard class="page-container" onKeyPress={onEnterKeyPress}>
                                 <IonCardContent>
                                     <IonItem class="header" lines="none">
                                         <IonLabel>Search available susu's</IonLabel>

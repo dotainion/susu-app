@@ -1,6 +1,7 @@
 export const routes = {
     defaults: "/",
     page404: "/page-not-found",
+    help: "/help",
     login: "/login",
     register: "/register",
     recover: "/recover",
