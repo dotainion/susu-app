@@ -2,9 +2,10 @@ import {IonButton, IonContent,IonIcon,IonItem,IonLabel,IonList,IonListHeader,Ion
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import { routes } from '../global/Routes';
-import { cogOutline, constructOutline, helpOutline, informationOutline, peopleOutline, personOutline, personSharp, searchOutline, settings, settingsOutline, stopwatchOutline } from 'ionicons/icons';
+import { cogOutline, constructOutline, helpOutline, informationOutline, peopleOutline, personOutline, personSharp, searchOutline, settings, settingsOutline, shareSocialOutline, stopwatchOutline } from 'ionicons/icons';
 import { useStore } from '../stateContext/AuthContext';
 import { tools } from '../tools/Tools';
+
 
 
 export const pages = [
@@ -34,6 +35,11 @@ export const pages = [
         iconColor: "",
         url: routes.manage
     },{
+        title: "Send Invite",
+        icon: shareSocialOutline,
+        iconColor: "",
+        url: (func, param)=>{func(param)}
+    },{
         title: "Help & FAQ's",
         icon: helpOutline,
         iconColor: "",
@@ -47,7 +53,7 @@ export const pages = [
 ];
 
 export const Menu = () => {
-    const { user, isLogin, requestFg } = useStore();
+    const { user, isLogin, requestFg, onShare } = useStore();
     const history = useHistory();
     pages[3].iconColor = requestFg;
     
@@ -59,7 +65,7 @@ export const Menu = () => {
                 <IonNote>The SUSU-APP</IonNote>
                 {pages.map((content, index) =>(
                         <IonMenuToggle autoHide={false} key={index}>
-                            <IonItem className="menuItemContainer" routerLink={content.url} routerDirection="none" lines="none">
+                            <IonItem className="menuItemContainer" onClick={()=>{if (typeof content.url === 'function') content.url(onShare,user?.id)}} routerLink={typeof content.url === "string" && content.url} routerDirection="none" lines="none">
                                 <IonIcon className="menuItemIcon" slot="start" icon={content.icon} style={{color:content.iconColor}} />
                                 <IonLabel>{content.title}</IonLabel>
                             </IonItem>

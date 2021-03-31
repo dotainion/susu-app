@@ -1,5 +1,6 @@
 export const routes = {
     defaults: "/",
+    test: "/test",
     page404: "/page-not-found",
     help: "/help",
     login: "/login",

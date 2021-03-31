@@ -22,6 +22,19 @@ export const AuthContextProvider = ({children}) =>{
     //these are for list of user members of susu
     const [susuMembers, setSusuMembers] = useState([]);
 
+    //share to social media
+    const onShare = (textMessage) =>{
+        navigator.share({
+            title: document.title,
+            text: textMessage,
+            url: window.location.href
+        }).then(()=>{
+
+        }).catch(()=>{
+            
+        })
+    }
+
     const login = async(email, password) =>{
         try{
             setIsLogin(await auth.signInWithEmailAndPassword(email, password));
@@ -130,6 +143,7 @@ export const AuthContextProvider = ({children}) =>{
             initSusuGroups,
             susuGroups,
             setSusuGroups,
+            onShare,
         }}>
             {!loading && children}
         </AuthContext.Provider>

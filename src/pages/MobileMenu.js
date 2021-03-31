@@ -8,8 +8,9 @@ import { useStore } from '../stateContext/AuthContext';
 
 
 export const MobileMenu = () =>{
-    const { user, isLogin, requestFg } = useStore();
+    const { user, isLogin, requestFg, onShare } = useStore();
     const history = useHistory();
+    pages[3].iconColor = requestFg;
     return(
         <IonPage className="page">
             <Header/>
@@ -20,16 +21,13 @@ export const MobileMenu = () =>{
                             <IonCard class="page-container">
                                 <IonCardContent>
                                     <IonItem class="header" lines="none">
-                                        <IonLabel>mobile board</IonLabel>
+                                        <IonLabel>Menu</IonLabel>
                                     </IonItem>
-                                    <IonList class="sub-header">
-                                        <IonLabel>mobile dash</IonLabel>
-                                    </IonList>
                                     <IonList>
                                         {
                                             pages.map((page, key)=>(
                                                 <IonList class="inline-container pointer" key={key}>
-                                                    <IonCard onClick={()=>history.push(page.url)} class="mobile-click">
+                                                    <IonCard onClick={()=>{if (typeof page.url === "function") page.url(onShare,user?.id); else history.push(page.url)}} class="mobile-click">
                                                         <IonIcon class="mobile-icon" icon={page.icon}/>
                                                         <IonItem class="mobile-text">
                                                             <div className="item-center">{page.title}</div>

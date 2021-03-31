@@ -5,10 +5,13 @@ import { Header } from '../components/Header';
 import { useStore } from '../stateContext/AuthContext';
 import { tools } from '../tools/Tools';
 import img from '../images/save.jpg';
+import { routes } from '../global/Routes';
+import { useHistory } from 'react-router';
 
 
 export const Welcome = () =>{
     const { user } = useStore();
+    const history = useHistory();
     return(
         <IonPage className="page">
             <Header/>
@@ -28,7 +31,7 @@ export const Welcome = () =>{
                                         <IonImg class="welcome-logo" src={img}/>
                                     </IonList>
                                     <IonList>
-                                        <IonButton class="item-center" size="small" fill="outline">Continue...</IonButton>
+                                        <IonButton class="item-center show-on-mobile" onClick={()=>history.push(routes.mobileMenu)} size="small" fill="outline">Continue...</IonButton>
                                     </IonList>
                                 </IonCardContent>
                             </IonCard>
