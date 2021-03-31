@@ -7,50 +7,50 @@ import { useStore } from '../stateContext/AuthContext';
 import { tools } from '../tools/Tools';
 
 
-
+export const pages = [
+    {
+        title: "My Account",
+        icon: personOutline,
+        iconColor: "",
+        url: routes.myAccount
+    },{
+        title: "Join Susu",
+        icon: peopleOutline,
+        iconColor: "",
+        url: routes.joinSusu
+    },{
+        title: "Create Susu",
+        icon: stopwatchOutline,
+        iconColor: "",
+        url: routes.createSusu
+    },{
+        title: "Requests",
+        icon: informationOutline,
+        iconColor: "",
+        url: routes.request
+    },{
+        title: "Manage",
+        icon: settingsOutline,
+        iconColor: "",
+        url: routes.manage
+    },{
+        title: "Help & FAQ's",
+        icon: helpOutline,
+        iconColor: "",
+        url: routes.help
+    },{
+        title: "Settings",
+        icon: constructOutline,
+        iconColor: "",
+        url: routes.settings
+    }
+];
 
 export const Menu = () => {
     const { user, isLogin, requestFg } = useStore();
     const history = useHistory();
-
-    const pages = [
-        {
-            title: "My Account",
-            icon: personOutline,
-            iconColor: "",
-            url: routes.myAccount
-        },{
-            title: "Join Susu",
-            icon: peopleOutline,
-            iconColor: "",
-            url: routes.joinSusu
-        },{
-            title: "Create Susu",
-            icon: stopwatchOutline,
-            iconColor: "",
-            url: routes.createSusu
-        },{
-            title: "Requests",
-            icon: informationOutline,
-            iconColor: requestFg,
-            url: routes.request
-        },{
-            title: "Manage",
-            icon: settingsOutline,
-            iconColor: "",
-            url: routes.manage
-        },{
-            title: "Help",
-            icon: helpOutline,
-            iconColor: "",
-            url: routes.help
-        },{
-            title: "Settings",
-            icon: constructOutline,
-            iconColor: "",
-            url: routes.settings
-        }
-    ];
+    pages[3].iconColor = requestFg;
+    
     return (
         <IonMenu hidden={!isLogin} contentId="menu" type="overlay">
             <IonContent>

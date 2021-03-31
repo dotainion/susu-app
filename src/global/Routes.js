@@ -12,4 +12,5 @@ export const routes = {
     manage: "/manage",
     welcome: "/welcome",
     myAccount: "/my-account",
+    mobileMenu: "/mobile/menu",
 }

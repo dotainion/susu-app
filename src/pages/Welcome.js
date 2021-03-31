@@ -1,4 +1,4 @@
-import { IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonIcon, IonImg, IonItem, IonLabel, IonList, IonPage, IonRow } from '@ionic/react';
+import { IonButton, IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonIcon, IonImg, IonItem, IonLabel, IonList, IonPage, IonRow } from '@ionic/react';
 import { constructOutline, settingsOutline } from 'ionicons/icons';
 import React, { useState } from 'react';
 import { Header } from '../components/Header';
@@ -26,6 +26,9 @@ export const Welcome = () =>{
                                     </IonList>
                                     <IonList>
                                         <IonImg class="welcome-logo" src={img}/>
+                                    </IonList>
+                                    <IonList>
+                                        <IonButton class="item-center" size="small" fill="outline">Continue...</IonButton>
                                     </IonList>
                                 </IonCardContent>
                             </IonCard>

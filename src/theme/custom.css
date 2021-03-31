@@ -161,6 +161,23 @@
     padding-left: 10px;
     padding-right: 10px;
 }
+.tab-bar{
+    margin-top: 5px;
+    padding-top: 5px;
+    user-select: none;
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    background-color: rgb(27, 87, 177);
+}
+.tab-bar label{
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
 .close{
     position: absolute;
     top: 10px;
@@ -200,6 +217,47 @@
 .tag-out{
     background-color: rgb(231, 231, 231);
 }
+.FAQ{
+    color: black;
+    margin-bottom: 10px;
+    background-color: rgb(228, 234, 236);
+}
+.FAQ div{
+    color: white;
+    padding: 5px;
+    user-select: none;
+    background-color: dodgerblue;
+}
+.FAQ p{
+    padding-left: 5px;
+}
+.FAQ span{
+    width: 100%;
+}
+.inline-container{
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    user-select: none;
+    border-radius: 5px;
+}
+.mobile-text{
+    font-size: 14px;
+}
+.mobile-text div{
+    white-space: nowrap;
+}
+.mobile-icon{
+    font-size: 50px;
+}
+.mobile-click:active{
+    box-shadow: 4px 4px 30px dodgerblue;
+}
+.show-on-mobile{
+    display: none;
+}
+
+
 
 ion-grid{
     background-size: cover;
@@ -216,6 +274,9 @@ ion-menu{
 @media screen and (max-width:767px){
     ion-menu{
         width: 100%;
+    }
+    .show-on-mobile{
+        display: block;
     }
     .header{
         font-size: 25px;

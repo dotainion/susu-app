@@ -1,5 +1,5 @@
 import { IonButton, IonButtons, IonCard, IonCardContent, IonContent, IonHeader, IonIcon, IonImg, IonInput, IonItem, IonItemDivider, IonLabel, IonList, IonMenuButton, IonModal, IonPopover, IonThumbnail, IonTitle, IonToolbar } from '@ionic/react';
-import { closeOutline, ellipsisVerticalOutline } from 'ionicons/icons';
+import { closeOutline, ellipsisVerticalOutline, gridOutline, homeOutline } from 'ionicons/icons';
 import React, { useRef, useState } from 'react';
 import { useHistory } from 'react-router';
 import { routes } from '../global/Routes';
@@ -21,9 +21,12 @@ export const Header = () =>{
     return(
         <IonHeader class="bg">
             <IonToolbar>
-                <IonButtons slot="start">
+                <IonButtons hidden slot="start">
                     <IonMenuButton/>
                 </IonButtons>
+                <IonItem class="show-on-mobile" slot="start" lines="none">
+                    <IonIcon onClick={()=>history.push(routes.mobileMenu)} class="settigns-btn" icon={gridOutline}/>
+                </IonItem>
                 <IonTitle>{tools.capitalize(cap())}</IonTitle>
                 <IonItem slot="end" lines="none">
                     <IonIcon onClick={taggleDropdown} class="settigns-btn" icon={ellipsisVerticalOutline}/>

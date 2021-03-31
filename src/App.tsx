@@ -39,6 +39,7 @@ import { Welcome } from './pages/Welcome';
 import { MyAccount } from './pages/MyAccount';
 import { Page404 } from './error/Page404';
 import { Help } from './pages/Help';
+import { MobileMenu } from './pages/MobileMenu';
 
 
 
@@ -74,6 +75,9 @@ const App: React.FC = () => {
                 </Route>
                 <Route exact path={routes.help}>
                   <AuthValidate component={<Help />}/>
+                </Route>
+                <Route exact path={routes.mobileMenu}>
+                  <AuthValidate component={<MobileMenu />}/>
                 </Route>
                 <Route render={()=><Page404 />}/>
               </Switch>
