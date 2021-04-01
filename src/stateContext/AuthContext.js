@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import { auth } from '../config/FirebaseConfig';
-import { addMember, getMember, getMyGroup, getRequest, getSusuMembers } from '../database/FirestoreDb';
+import { addMember, getMember, getMyGroup, getRequest, getSusuMembers, updateMember } from '../database/FirestoreDb';
 import { routes } from '../global/Routes';
 
 
@@ -27,7 +27,7 @@ export const AuthContextProvider = ({children}) =>{
         navigator.share({
             title: document.title,
             text: textMessage,
-            url: window.location.href
+            url: window.location.protocol+routes.param.replace(":id","")+":"+user?.id
         }).then(()=>{
 
         }).catch(()=>{
@@ -68,6 +68,23 @@ export const AuthContextProvider = ({children}) =>{
             console.log(err);
             return {error:err?.message};
         }
+    }
+    const changePassword = async(password) =>{
+        try{
+            return await user.updatePassword(password);
+        }catch{
+            return false;
+        }
+    }
+    const changeEmail = async(email) =>{
+        try{
+            await user.updateEmail(email);
+            await updateMember({email: email},user?.id);
+            return true;
+        }catch{
+            return false;
+        }
+        
     }
 
     //get the susu inclued groups in
@@ -144,6 +161,8 @@ export const AuthContextProvider = ({children}) =>{
             susuGroups,
             setSusuGroups,
             onShare,
+            changeEmail,
+            changePassword,
         }}>
             {!loading && children}
         </AuthContext.Provider>

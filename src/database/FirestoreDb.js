@@ -24,6 +24,16 @@ export const getMember = async(uid) =>{
     }
 }
 
+export const updateMember = async(data,uid) =>{
+    try{
+        await updateData(collection.users,data,uid);
+        return true;
+    }catch(error){
+        console.log(error);
+        return false;
+    }
+}
+
 export const getSusuMembers = async(uid) =>{
     try{
         return await getData(collection.groups,uid);
@@ -55,20 +65,19 @@ export const sendRequest = async(data) =>{
 }
 
 export const acceptRequest = async(data, uid) =>{
-    console.log(data)
     try{
         let records = await getData(collection.groups,uid);
         for (let r of records?.members || []){
-            if (r?.id === data?.id) return false;
+            if (r?.id === data?.id) return false;//already a member
         }
         const requestId = data?.reqDocId;
         delete data["reqDocId"];
         delete data["group"];
-        let newRec = {members: records?.members || [data]};
-        newRec?.push?.(data);
+        let newRec = {members: records?.members || []};
+        newRec?.members.push?.(data);
         await addData(collection.groups, newRec, uid);
         await declineRequest(requestId);
-        await addGroup(data?.id, uid)
+        await addGroupIdToMyAccount(data?.id, uid)
         return true;
     }catch(error){
         console.log(error);
@@ -77,7 +86,7 @@ export const acceptRequest = async(data, uid) =>{
 }
 
 //add the goup user has join in the user member account
-const addGroup = async(memberId, groupId) =>{
+const addGroupIdToMyAccount = async(memberId, groupId) =>{
     try{
         const cUser = await getData(collection.users,memberId);
         let cGroup = cUser?.group || [];
@@ -167,5 +176,24 @@ export const rememberCredsDb = async(data, uid) =>{
     }catch(error){
         console.log(error);
         return false;
+    }
+}
+
+export const joinSusuByLink = async(linkId, myData) =>{
+    try{
+        let records = await getData(collection.groups,linkId);
+        for (let r of records?.members || []){
+            if (r?.id === linkId) return false;//already a member
+        }
+        let newRec = {members: records?.members || []};
+        const myId = myData?.id;
+        delete myData["id"];
+        delete myData["group"];
+        newRec?.members?.push?.({id:myId,info:myData});
+        await addData(collection.groups, newRec, linkId);
+        await addGroupIdToMyAccount(linkId, myData?.id);
+        return true;
+    }catch(error){
+        console.log(error)
     }
 }

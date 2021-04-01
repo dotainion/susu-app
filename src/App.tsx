@@ -41,6 +41,7 @@ import { Page404 } from './error/Page404';
 import { Help } from './pages/Help';
 import { MobileMenu } from './pages/MobileMenu';
 import { Test } from './test/Test';
+import { JoinByLink } from './pages/JoinByLink';
 
 
 
@@ -79,6 +80,9 @@ const App: React.FC = () => {
                 </Route>
                 <Route exact path={routes.mobileMenu}>
                   <AuthValidate component={<MobileMenu />}/>
+                </Route>
+                <Route exact path={routes.param}>
+                  <AuthValidate component={<JoinByLink />}/>
                 </Route>
                 <Route exact path={routes.test}>
                   <AuthValidate component={<Test />}/>

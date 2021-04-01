@@ -3,6 +3,7 @@ export const routes = {
     test: "/test",
     page404: "/page-not-found",
     help: "/help",
+    param: "/join-by-link:id",
     login: "/login",
     register: "/register",
     recover: "/recover",

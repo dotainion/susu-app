@@ -1,4 +1,4 @@
-import {IonButton, IonContent,IonIcon,IonItem,IonLabel,IonList,IonListHeader,IonMenu,IonMenuToggle,IonNote,} from '@ionic/react';
+import {IonAlert, IonButton, IonContent,IonIcon,IonItem,IonLabel,IonList,IonListHeader,IonMenu,IonMenuToggle,IonNote,} from '@ionic/react';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import { routes } from '../global/Routes';
@@ -38,7 +38,10 @@ export const pages = [
         title: "Send Invite",
         icon: shareSocialOutline,
         iconColor: "",
-        url: (func, param)=>{func(param)}
+        url: (func, param)=>{
+            if (param?.start) func(param?.id);
+            else tools.alert(false,"You must first create a susu to share.",5000);
+        }
     },{
         title: "Help & FAQ's",
         icon: helpOutline,
@@ -65,8 +68,8 @@ export const Menu = () => {
                 <IonNote>The SUSU-APP</IonNote>
                 {pages.map((content, index) =>(
                         <IonMenuToggle autoHide={false} key={index}>
-                            <IonItem className="menuItemContainer" onClick={()=>{if (typeof content.url === 'function') content.url(onShare,user?.id)}} routerLink={typeof content.url === "string" && content.url} routerDirection="none" lines="none">
-                                <IonIcon className="menuItemIcon" slot="start" icon={content.icon} style={{color:content.iconColor}} />
+                            <IonItem className="menu-pointer" onClick={()=>{if (typeof content.url === 'function') content.url(onShare,user)}} routerLink={typeof content.url === "string" && content.url} routerDirection="none" lines="none">
+                                <IonIcon slot="start" icon={content.icon} style={{color:content.iconColor}} />
                                 <IonLabel>{content.title}</IonLabel>
                             </IonItem>
                         </IonMenuToggle>

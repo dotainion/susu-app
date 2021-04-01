@@ -70,6 +70,46 @@ class Tools{
             return null;
         }
     };
+    alert(state, message, duration=3000){
+        let toastDivContainer = document.createElement("div");
+        toastDivContainer.style.position = "fixed";
+        toastDivContainer.style.zIndex = 999999999999;
+        toastDivContainer.style.top = 0;
+        toastDivContainer.style.width = "100%";
+        toastDivContainer.style.height = "100vh";
+        toastDivContainer.style.backgroundColor = "rgb(0,0,0,0.5)";
+
+        let toastDiv = document.createElement("div");
+        
+        toastDiv.style.position = "absolute";
+        toastDiv.style.zIndex = 999999999999;
+        toastDiv.style.top = "50%";
+        toastDiv.style.left = "50%"
+        toastDiv.style.fontSize = "15px";
+        toastDiv.style.padding = "20px";
+        toastDiv.style.textAlign = "center";
+        toastDiv.style.paddingLeft = "40px";
+        toastDiv.style.paddingRight = "40px";
+        toastDiv.style.borderRadius = "25px";
+        toastDiv.style.border = "1px solid gray";
+        toastDiv.style.backgroundColor = "white";
+        toastDiv.style.whiteSpace = "nowrap";
+        toastDiv.style.transform = "translate3d(-50%,-50%,0)";
+
+        if (state) toastDiv.style.color = "green";
+        else toastDiv.style.color = "red";
+
+        toastDiv.innerHTML = message || "no message";
+
+        toastDivContainer.appendChild(toastDiv);
+
+        document.body.appendChild(toastDivContainer);
+        
+        setTimeout(() => {
+            toastDivContainer.removeChild(toastDiv);
+            document.body.removeChild(toastDivContainer);
+        }, duration);
+    }
 }
 
 export const tools = new Tools();

@@ -27,7 +27,7 @@ export const MobileMenu = () =>{
                                         {
                                             pages.map((page, key)=>(
                                                 <IonList class="inline-container pointer" key={key}>
-                                                    <IonCard onClick={()=>{if (typeof page.url === "function") page.url(onShare,user?.id); else history.push(page.url)}} class="mobile-click">
+                                                    <IonCard onClick={()=>{if (typeof page.url === "function") page.url(onShare,user); else history.push(page.url)}} class="mobile-click">
                                                         <IonIcon class="mobile-icon" icon={page.icon}/>
                                                         <IonItem class="mobile-text">
                                                             <div className="item-center">{page.title}</div>

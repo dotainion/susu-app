@@ -29,6 +29,7 @@ export const Register = () =>{
     const cityRef = useRef();
     const emailRef = useRef();
     const addressRef = useRef();
+    const bankNumberRef = useRef();
     const passwordRef = useRef();
     const confirmPasswordRef = useRef();
 
@@ -78,6 +79,7 @@ export const Register = () =>{
                 city: cityRef.current.value?.toLowerCase?.() || "",
                 email: emailRef.current.value?.toLowerCase?.() || "",
                 address: addressRef.current.value?.toLowerCase?.() || "",
+                bankNumer: bankNumberRef.current.value?.toLowerCase?.() || "",
             }
             const response = await register(emailRef.current.value, passwordRef.current.value, regist);
             if (response?.error) setError(response?.error);
@@ -116,11 +118,11 @@ export const Register = () =>{
                                             <IonItemDivider>Registration</IonItemDivider>
                                             <IonItem>
                                                 <IonLabel position="floating">Full Name</IonLabel>
-                                                <IonInput ref={nameRef}/>
+                                                <IonInput ref={nameRef} type="text"/>
                                             </IonItem>
                                             <IonItem>
                                                 <IonLabel position="floating">Next of Kin</IonLabel>
-                                                <IonInput ref={nextOfKinRef}/>
+                                                <IonInput ref={nextOfKinRef} type="text"/>
                                             </IonItem>
                                             <IonItem>
                                                 <IonLabel position="floating">Phone Number</IonLabel>
@@ -128,7 +130,7 @@ export const Register = () =>{
                                             </IonItem>
                                             <IonItem>
                                                 <IonLabel position="floating">Id Card</IonLabel>
-                                                <IonInput ref={idCardRef}/>
+                                                <IonInput ref={idCardRef}type="text"/>
                                             </IonItem>
                                         </div>
                                         <div hidden={!inputToggle.second}>
@@ -150,10 +152,14 @@ export const Register = () =>{
                                             />
                                             <IonItem>
                                                 <IonLabel position="floating">Address</IonLabel>
-                                                <IonInput ref={addressRef} type="email"/>
+                                                <IonInput ref={addressRef} type="text"/>
                                             </IonItem>
                                         </div>
                                         <div hidden={!inputToggle.third}>
+                                            <IonItem>
+                                                <IonLabel position="floating">Bank Number</IonLabel>
+                                                <IonInput ref={bankNumberRef} type="text"/>
+                                            </IonItem>
                                             <IonItem>
                                                 <IonLabel position="floating">Email</IonLabel>
                                                 <IonInput ref={emailRef} type="email"/>

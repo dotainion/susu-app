@@ -256,7 +256,47 @@
 .show-on-mobile{
     display: none;
 }
-
+.menu-pointer:hover{
+    cursor: pointer;
+    --ion-background-color: rgb(238, 237, 237);
+}
+.settings-card{
+    margin: 10px;
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 4px 4px 10px lightgray;
+}
+.input-settings-container{
+    width: 100%;
+    padding: 5px;
+}
+.input-settings{
+    width: 100%;
+    outline: none;
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid lightgray;
+}
+.input-settings div{
+    white-space: nowrap;
+}
+.parent-select{
+    position: relative;
+}
+.input-opt{
+    padding: 7px;
+    background: transparent;
+}
+.rev-flexed{
+    display: flex;
+}
+.text-nowrap{
+    white-space: nowrap;
+}
+.background-extra-len{
+    height: 90vh;
+    background: transparent;
+}
 
 
 ion-grid{
@@ -283,6 +323,9 @@ ion-menu{
     }
     .sub-header{
         font-size: 12px;
+    }
+    .rev-flexed{
+        display: block;
     }
 }
 @keyframes spin{

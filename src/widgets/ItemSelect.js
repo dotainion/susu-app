@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 
 
 
-export const ItemSelect = ({itemSelectRef, options, label}) =>{
+export const ItemSelect = ({itemSelectRef, options, label, style}) =>{
     const [selected, setSelected] = useState("");
     const floatLabelRef = useRef();
     const containerRef = useRef();
@@ -41,7 +41,7 @@ export const ItemSelect = ({itemSelectRef, options, label}) =>{
     },[]);
 
     return(
-        <IonItem onClick={floatTop} ref={containerRef} onBlur={focusOut} lines="full">
+        <IonItem onClick={floatTop} ref={containerRef} style={style} onBlur={focusOut} lines="full">
             <IonLabel ref={floatLabelRef} onClick={floatTop} class="item-select-label">{label}</IonLabel>
             <select ref={itemSelectRef} onChange={(e)=>setSelected(e.target.value)} className="item-select">
                 <option hidden defaultChecked></option>
