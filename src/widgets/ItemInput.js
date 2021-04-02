@@ -2,11 +2,21 @@ import React from 'react';
 
 
 
-export const ItemInput = ({label, disabled, inputRef}) =>{
+export const ItemInput = ({label, type, color, disabled, inputRef, placeholder}) =>{
     return(
-        <div className="input-settings-container">
+        <div
+            onClick={(e)=>e.stopPropagation()}
+            className="input-settings-container"
+            style={{color:color}}>
             <div>{label}</div>
-            <input disabled={disabled} ref={inputRef} className="input-settings"/>
+            <input 
+                disabled={disabled} 
+                type={type} 
+                ref={inputRef} 
+                placeholder={placeholder} 
+                className="input-settings"
+                style={{borderColor:color}}
+            />
         </div>
     )
 }

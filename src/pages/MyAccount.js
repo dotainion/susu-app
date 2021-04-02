@@ -1,29 +1,42 @@
-import { IonAlert, IonButton, IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonIcon, IonItem, IonItemDivider, IonLabel, IonList, IonPage, IonRow } from '@ionic/react';
+import { IonAlert, IonButton, IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonIcon, IonItem, IonItemDivider, IonLabel, IonList, IonPage, IonPopover, IonRow } from '@ionic/react';
 import { constructOutline, settingsOutline } from 'ionicons/icons';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Header } from '../components/Header';
 import { routes } from '../global/Routes';
 import { useStore } from '../stateContext/AuthContext';
 import { tools } from '../tools/Tools';
+import { ItemInput } from '../widgets/ItemInput';
+import { Payments } from '../widgets/Payments';
 
 
 export const MyAccount = () =>{
     const { user, susuGroups } = useStore();
 
+    const [payData, setPayData] = useState({state:false,data:null});
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
     const [showAlert, setShowAlert] = useState(false);
 
-    const onMakePayment = () =>{
-        setShowAlert(true);
+    const payRef = useRef();
+
+    const onMakePayment = (record) =>{
+        setPayData({state:true,data:record});
+        console.log(record)
     };
     return(
         <IonPage className="page">
             <Header/>
 
+            <Payments 
+                isOpen={payData.state} 
+                record={payData.data}
+                onClose={()=>setPayData({state:false,data:null})}
+                onSubmit={()=>setShowAlert(true)}
+            />
+
             <IonAlert
                 isOpen={showAlert}
-                onDidDismiss={() => setShowAlert({state:false,data:null})}
+                onDidDismiss={() => setShowAlert(false)}
                 cssClass='my-custom-class'
                 header={'Alert!!'}
                 subHeader={'Cannot continue.'}

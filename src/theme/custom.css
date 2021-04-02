@@ -22,6 +22,13 @@
     font-weight: bold;
     text-align: center;
 }
+.header-bg-style{
+    color: white;
+    padding: 5px;
+    user-select: none;
+    text-align: center;
+    background-color: #428cff;
+}
 .mini-header{
     font-weight: bold;
 }
@@ -144,6 +151,10 @@
     border-radius: 50%;
     cursor: pointer;
     color: green;
+}
+.rounded{
+    border-radius: 50%;
+    background-color: white;
 }
 .round:active{
     box-shadow: 2px 2px 20px lightblue;
@@ -299,6 +310,11 @@
 .background-extra-len{
     height: 90vh;
     background: transparent;
+}
+.pay-card{
+    width: 300px;
+    background-color: white;
+    --ion-background-color: white;
 }
 
 
