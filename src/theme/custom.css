@@ -102,6 +102,9 @@
     font-size: 30px;
     animation: spin 1s infinite linear;
 }
+.spin-color{
+    color: purple;
+}
 .input-search{
     margin-top: 20px;
     margin-bottom: 20px;

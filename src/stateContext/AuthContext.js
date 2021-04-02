@@ -3,6 +3,8 @@ import { useHistory } from 'react-router';
 import { auth } from '../config/FirebaseConfig';
 import { addMember, getMember, getMyGroup, getRequest, getSusuMembers, updateMember } from '../database/FirestoreDb';
 import { routes } from '../global/Routes';
+import { tools } from '../tools/Tools';
+import { Loader } from '../widgets/Loader';
 
 
 
@@ -14,6 +16,9 @@ export const AuthContextProvider = ({children}) =>{
     const [isLogin, setIsLogin] = useState();
     const [user, setUser] = useState({});
 
+    //loader
+    const [showLoader, setShowLoader] = useState(false);
+
     //these are for notification on side menu
     const [requestFg, setRequestFg] = useState("");
     const [pendingRequest, setPendingRequest] = useState([]);
@@ -23,16 +28,16 @@ export const AuthContextProvider = ({children}) =>{
     const [susuMembers, setSusuMembers] = useState([]);
 
     //share to social media
-    const onShare = (textMessage) =>{
-        navigator.share({
-            title: document.title,
-            text: textMessage,
-            url: window.location.protocol+routes.param.replace(":id","")+":"+user?.id
-        }).then(()=>{
-
-        }).catch(()=>{
-            
-        })
+    const onShare = () =>{
+        setShowLoader(true);
+        if (user?.start){
+            navigator.share({
+                title: document.title,
+                text: `${tools.capitalize(user?.name)} invited you to be part of a susu.`,
+                url: window.location.protocol+routes.param.replace(":id","")+":"+user?.id
+            }).then(()=>{}).catch(()=>{});
+        }else tools.alert(false,"You must first create a susu to share.",5000);
+        setShowLoader(false);
     }
 
     const login = async(email, password) =>{
@@ -142,29 +147,32 @@ export const AuthContextProvider = ({children}) =>{
         });
     },[isLogin]);
     return(
-        <AuthContext.Provider value={{
-            loading,
-            isLogin,
-            login,
-            register,
-            signOut,
-            recover,
-            user,
-            requestFg,
-            setRequestFg,
-            pendingRequest,
-            initFunctions,
-            initPendingRequests,
-            susuMembers,
-            initSusuMembers,
-            initSusuGroups,
-            susuGroups,
-            setSusuGroups,
-            onShare,
-            changeEmail,
-            changePassword,
-        }}>
-            {!loading && children}
-        </AuthContext.Provider>
+        <>
+            <Loader isOpen={showLoader}/>
+            <AuthContext.Provider value={{
+                loading,
+                isLogin,
+                login,
+                register,
+                signOut,
+                recover,
+                user,
+                requestFg,
+                setRequestFg,
+                pendingRequest,
+                initFunctions,
+                initPendingRequests,
+                susuMembers,
+                initSusuMembers,
+                initSusuGroups,
+                susuGroups,
+                setSusuGroups,
+                onShare,
+                changeEmail,
+                changePassword,
+            }}>
+                {!loading && children}
+            </AuthContext.Provider>
+        </>
     )
 }
