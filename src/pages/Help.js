@@ -110,6 +110,13 @@ const questons = [
         }
     ];
 
+const helps = [
+    {
+        question: "questions",
+        answer: "my answers",
+        list: []
+    }
+];
 
 
 export const Help = () =>{
@@ -149,16 +156,14 @@ export const Help = () =>{
                                     <IonList hidden={tab}>
                                         {
                                             questons.map((faq, key)=>(
-                                                <div className="FAQ" key={key}>
+                                                <div className="question-and-answers" key={key}>
                                                     <div onClick={()=>toggleFAQs(`${faq.FAQ}-/-expan`)}><IonIcon icon={addOutline}/>{faq.FAQ}</div>
                                                     <span hidden id={`${faq.FAQ}-/-expan`}>
                                                         <p>{faq.answer}</p>
                                                         <ul>
-                                                            {
-                                                                faq.list.map((list, key)=>(
-                                                                    <li key={key}>{list}</li>
-                                                                ))
-                                                            }
+                                                            {faq.list.map((list, key)=>(
+                                                                <li key={key}>{list}</li>
+                                                            ))}
                                                         </ul>
                                                     </span>
                                                 </div>
@@ -167,7 +172,19 @@ export const Help = () =>{
                                     </IonList>
                                     {/* this is for help*/}
                                     <IonList hidden={!tab}>
-                                        Helps comming soon
+                                        {
+                                            helps.map((howTo, key)=>(
+                                                <div className="question-and-answers" key={key}>
+                                                    <div style={{color:"dodgerblue",backgroundColor:"white"}}>{howTo.question}</div>
+                                                    <p style={{color:"dodgerblue",backgroundColor:"white"}}>{howTo.answer}</p>
+                                                    <ul>
+                                                        {howTo.list.map((ans, key)=>(
+                                                            <li key={key}>{ans}</li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
+                                            ))
+                                        }
                                     </IonList>
                                 </IonCardContent>
                             </IonCard>

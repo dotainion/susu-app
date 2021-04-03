@@ -22,7 +22,7 @@ export const Recover = () =>{
 
     const onSubmit = async() =>{
         setError({msg:"",color:""});
-        if (!tools.isEmailValid(emailRef.current.value)){
+        if (!tools.validateEmail(emailRef.current.value)){
             emailRef.current.setFocus();
             return setError({msg:"Invalid email",color:"red"});
         }

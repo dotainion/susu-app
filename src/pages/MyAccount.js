@@ -19,9 +19,8 @@ export const MyAccount = () =>{
 
     const payRef = useRef();
 
-    const onMakePayment = (record) =>{
+    const onOpenPaymentForm = (record) =>{
         setPayData({state:true,data:record});
-        console.log(record)
     };
     return(
         <IonPage className="page">
@@ -31,7 +30,7 @@ export const MyAccount = () =>{
                 isOpen={payData.state} 
                 record={payData.data}
                 onClose={()=>setPayData({state:false,data:null})}
-                onSubmit={()=>setShowAlert(true)}
+                onSubmit={(obj)=>setShowAlert(true)}
             />
 
             <IonAlert
@@ -103,7 +102,7 @@ export const MyAccount = () =>{
                                                         </IonList>
                                                         <IonItemDivider color="medium">Make Deposit</IonItemDivider>
                                                         <IonItem lines="full">
-                                                            <IonButton fill="outline" onClick={()=>onMakePayment(group)} slot="start">Payment</IonButton>
+                                                            <IonButton fill="outline" onClick={()=>onOpenPaymentForm(group)} slot="start">Payment</IonButton>
                                                         </IonItem>
                                                     </IonList>
                                                 )):

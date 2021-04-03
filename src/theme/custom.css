@@ -110,7 +110,7 @@
     animation: spin 1s infinite linear;
 }
 .spin-color{
-    color: purple;
+    color: rgb(5, 46, 87);
 }
 .input-search{
     margin-top: 20px;
@@ -231,21 +231,21 @@
 .tag-out{
     background-color: rgb(231, 231, 231);
 }
-.FAQ{
+.question-and-answers{
     color: black;
     margin-bottom: 10px;
     background-color: rgb(228, 234, 236);
 }
-.FAQ div{
+.question-and-answers div{
     color: white;
     padding: 5px;
     user-select: none;
     background-color: dodgerblue;
 }
-.FAQ p{
+.question-and-answers p{
     padding-left: 5px;
 }
-.FAQ span{
+.question-and-answers span{
     width: 100%;
 }
 .inline-container{
@@ -282,13 +282,14 @@
 }
 .input-settings-container{
     width: 100%;
-    padding: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 .input-settings{
     width: 100%;
     outline: none;
-    padding: 5px;
-    border-radius: 10px;
+    padding: 7px;
+    border-radius: 5px;
     border: 1px solid lightgray;
 }
 .input-settings div{
@@ -312,7 +313,7 @@
     background: transparent;
 }
 .pay-card{
-    width: 300px;
+    width: 320px;
     background-color: white;
     --ion-background-color: white;
 }
@@ -329,6 +330,16 @@ ion-header{
 }
 ion-menu{
     width: 0px;
+}
+ion-note{
+    width: 100%;
+    font-weight: bold;
+    padding-left: 10px;
+    color: dodgerblue;
+}
+ion-list-header{
+    font-weight: bold;
+    color: dodgerblue;
 }
 @media screen and (max-width:767px){
     ion-menu{

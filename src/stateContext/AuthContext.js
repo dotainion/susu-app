@@ -28,14 +28,18 @@ export const AuthContextProvider = ({children}) =>{
     const [susuMembers, setSusuMembers] = useState([]);
 
     //share to social media
-    const onShare = () =>{
+    const onShare = async() =>{
         setShowLoader(true);
         if (user?.start){
-            navigator.share({
+            await navigator.share({
                 title: document.title,
                 text: `${tools.capitalize(user?.name)} invited you to be part of a susu.`,
                 url: window.location.protocol+routes.param.replace(":id","")+":"+user?.id
-            }).then(()=>{}).catch(()=>{});
+            }).then(async()=>{
+                let reInUser = await initUser(user?.id);
+                reInUser["id"] = user?.id;
+                setUser(reInUser);
+            }).catch(()=>{});
         }else tools.alert(false,"You must first create a susu to share.",5000);
         setShowLoader(false);
     }
@@ -134,12 +138,17 @@ export const AuthContextProvider = ({children}) =>{
         initSusuMembers(); 
         initSusuGroups();
     }
+
+    const initUser = async(uid) =>{
+        let userData = await getMember(uid);
+        userData["id"] = uid;
+        setUser(userData);
+    }
+
     useEffect(()=>{
         auth.onAuthStateChanged(async(currentUser)=>{
             if (Object.keys(currentUser || {}).length > 0){
-                const userData = await getMember(currentUser?.uid);
-                userData["id"] = currentUser?.uid;
-                setUser(userData);
+                await initUser(currentUser?.uid);
                 setIsLogin(currentUser);
                 setLoading(false);
                 initFunctions();

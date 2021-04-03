@@ -47,7 +47,7 @@ class Tools{
             return value;
         }else return false;
     }
-    isEmailValid(email){
+    validateEmail(email){
         const regix = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
         if (regix.test(email)) return true;
         return false;

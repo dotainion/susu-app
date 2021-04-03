@@ -1,5 +1,5 @@
-import { IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonInput, IonItem, IonItemDivider, IonLabel, IonList, IonPage, IonRow } from '@ionic/react';
-import React, { useRef, useState } from 'react';
+import { IonAlert, IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonInput, IonItem, IonItemDivider, IonLabel, IonList, IonPage, IonPopover, IonRow } from '@ionic/react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Header } from '../components/Header';
 import { startSusu } from '../database/FirestoreDb';
 import { useStore } from '../stateContext/AuthContext';
@@ -7,9 +7,10 @@ import { ItemSelect } from '../widgets/ItemSelect';
 
 
 export const CreateSusu = () =>{
-    const { user } = useStore();
+    const { user, onShare } = useStore();
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
+    const [showShare, setShowShare] = useState(false);
 
     const nameRef = useRef();
     const costRef = useRef();
@@ -35,14 +36,41 @@ export const CreateSusu = () =>{
                 duration: durationRef.current.value?.toLowerCase?.() || ""
             }
             const response = await startSusu(startData,user?.id);
-            if (response) setSuccess("Susu Started");
-            else setError("Susu already started");
+            if (response){
+                setShowShare(true);
+                setSuccess("Susu Started");
+            }else setError("Susu already started");
             clearFeilds();
         }else setError("All fields must be entered");
     }
+
+    useEffect(()=>{
+        if (user?.start) setShowShare(true);
+    },[]);
     return(
         <IonPage className="page">
             <Header/>
+
+            <IonAlert
+                isOpen={showShare}
+                backdropDismiss={false}
+                onDidDismiss={() => setShowShare(false)}
+                cssClass='my-custom-class'
+                header={'Invite your friends!!'}
+                subHeader={'Send invitation out to my friends.'}
+                message={'You can invite friends to join your susu through whatsapp and more...'}
+                buttons={[
+                    {
+                        text: "Cancel",
+                        role: "cancel",
+                        handler: ()=>{}
+                    },{
+                        text: "Share",
+                        handler: ()=>onShare()
+                    }
+                ]}
+            />
+
             <IonContent>
                 <IonGrid>
                     <IonRow>

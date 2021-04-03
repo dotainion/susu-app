@@ -2,7 +2,7 @@ import React from 'react';
 
 
 
-export const ItemInput = ({label, type, color, disabled, inputRef, placeholder}) =>{
+export const ItemInput = ({label, type, color, disabled, inputRef, placeholder, onChange}) =>{
     return(
         <div
             onClick={(e)=>e.stopPropagation()}
@@ -16,6 +16,7 @@ export const ItemInput = ({label, type, color, disabled, inputRef, placeholder})
                 placeholder={placeholder} 
                 className="input-settings"
                 style={{borderColor:color}}
+                onChange={onChange}
             />
         </div>
     )
