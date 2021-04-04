@@ -1,4 +1,4 @@
-import { cogOutline, constructOutline, helpOutline, informationOutline, peopleOutline, personOutline, personSharp, searchOutline, settings, settingsOutline, shareSocialOutline, stopwatchOutline } from 'ionicons/icons';
+import { constructOutline, helpOutline, informationOutline, peopleOutline, personOutline, settingsOutline, shareSocialOutline, stopwatchOutline } from 'ionicons/icons';
 import { routes } from '../global/Routes';
 
 export const content = {

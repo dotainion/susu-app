@@ -1,5 +1,5 @@
-import { IonAlert, IonButton, IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonItem, IonItemDivider, IonLabel, IonList, IonPage, IonPopover, IonRow } from '@ionic/react';
-import React, { useEffect, useState } from 'react';
+import { IonAlert, IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonItem, IonItemDivider, IonLabel, IonList, IonPage, IonRow } from '@ionic/react';
+import { useState } from 'react';
 import { Header } from '../components/Header';
 import { acceptRequest, declineRequest } from '../database/FirestoreDb';
 import { useStore } from '../stateContext/AuthContext';

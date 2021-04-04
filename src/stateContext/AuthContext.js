@@ -1,5 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
-import { useHistory } from 'react-router';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { auth } from '../config/FirebaseConfig';
 import { addMember, getMember, getMyGroup, getRequest, getSusuMembers, updateMember } from '../database/FirestoreDb';
 import { routes } from '../global/Routes';

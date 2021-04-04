@@ -1,6 +1,4 @@
-import { IonButton, IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonIcon, IonImg, IonItem, IonLabel, IonList, IonPage, IonRow } from '@ionic/react';
-import { constructOutline, settingsOutline } from 'ionicons/icons';
-import React, { useState } from 'react';
+import { IonButton, IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonImg, IonItem, IonLabel, IonList, IonPage, IonRow } from '@ionic/react';
 import { Header } from '../components/Header';
 import { useStore } from '../stateContext/AuthContext';
 import { tools } from '../tools/Tools';

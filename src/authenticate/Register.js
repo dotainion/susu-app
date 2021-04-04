@@ -1,6 +1,5 @@
 import { IonButton, IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonInput, IonItem, IonItemDivider, IonLabel, IonList, IonPage, IonRadio, IonRadioGroup, IonRow } from '@ionic/react';
-import { pawSharp } from 'ionicons/icons';
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { useHistory } from 'react-router';
 import { routes } from '../global/Routes';
 import { useStore } from '../stateContext/AuthContext';

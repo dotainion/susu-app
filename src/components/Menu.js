@@ -1,5 +1,4 @@
-import {IonAlert, IonButton, IonContent,IonIcon,IonItem,IonLabel,IonList,IonListHeader,IonMenu,IonMenuToggle,IonNote,} from '@ionic/react';
-import React, { useState } from 'react';
+import { IonContent,IonIcon,IonItem,IonLabel,IonList,IonListHeader,IonMenu,IonMenuToggle,IonNote } from '@ionic/react';
 import { useHistory } from 'react-router';
 import { content } from '../contents/Contents';
 import { useStore } from '../stateContext/AuthContext';

@@ -1,5 +1,5 @@
-import { IonItem, IonLabel, useIonViewDidEnter, useIonViewWillEnter, useIonViewWillLeave } from '@ionic/react';
-import React, { useEffect, useRef, useState } from 'react';
+import { IonItem, IonLabel, useIonViewDidEnter, useIonViewWillLeave } from '@ionic/react';
+import { useEffect, useRef, useState } from 'react';
 
 
 

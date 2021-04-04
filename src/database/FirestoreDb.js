@@ -1,4 +1,3 @@
-import { deleteDatabase } from "workbox-core/_private";
 import { addData, deleteData, getData, queryEqualBy1, queryEqualBy2, updateData } from "./CollectionsDb"
 
 const collection = {

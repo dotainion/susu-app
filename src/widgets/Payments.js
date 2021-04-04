@@ -1,12 +1,11 @@
-import { IonButton, IonCardContent, IonIcon, IonItem, IonList, IonSelect } from '@ionic/react';
+import { IonButton, IonCardContent, IonIcon, IonItem, IonList } from '@ionic/react';
 import { getStates } from 'country-state-picker';
-import { add, car, card, closeOutline } from 'ionicons/icons';
-import React, { useEffect, useRef, useState } from 'react';
+import { closeOutline } from 'ionicons/icons';
+import { useEffect, useRef, useState } from 'react';
 import { useStore } from '../stateContext/AuthContext';
 import { tools } from '../tools/Tools';
 import { CardInput } from './CardInput';
 import { ItemInput } from './ItemInput';
-import { ItemSelect } from './ItemSelect';
 import { ItemSelectOption } from './ItemSelectOption';
 
 

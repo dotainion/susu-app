@@ -1,14 +1,12 @@
-import { IonButton, IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonIcon, IonInput, IonItem, IonItemDivider, IonLabel, IonList, IonPage, IonRadio, IonRadioGroup, IonRow, useIonViewDidEnter } from '@ionic/react';
+import { IonButton, IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonIcon, IonItem, IonItemDivider, IonLabel, IonList, IonPage, IonRow } from '@ionic/react';
 import { getStates } from 'country-state-picker';
-import { constructOutline, settingsOutline } from 'ionicons/icons';
-import React, { useEffect, useRef, useState } from 'react';
-import { isTypeOnlyImportOrExportDeclaration } from 'typescript';
+import { constructOutline } from 'ionicons/icons';
+import { useEffect, useRef } from 'react';
 import { Header } from '../components/Header';
 import { updateMember } from '../database/FirestoreDb';
 import { useStore } from '../stateContext/AuthContext';
 import { tools } from '../tools/Tools';
 import { ItemInput } from '../widgets/ItemInput';
-import { ItemSelect } from '../widgets/ItemSelect';
 import { ItemSelectOption } from '../widgets/ItemSelectOption';
 
 

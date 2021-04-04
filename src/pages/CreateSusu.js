@@ -1,4 +1,4 @@
-import { IonAlert, IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonInput, IonItem, IonItemDivider, IonLabel, IonList, IonPage, IonPopover, IonRow } from '@ionic/react';
+import { IonAlert, IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonInput, IonItem, IonItemDivider, IonLabel, IonList, IonPage, IonRow } from '@ionic/react';
 import React, { useEffect, useRef, useState } from 'react';
 import { Header } from '../components/Header';
 import { startSusu } from '../database/FirestoreDb';

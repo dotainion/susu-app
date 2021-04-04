@@ -1,6 +1,6 @@
-import { IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonIcon, IonItem, IonItemDivider, IonLabel, IonList, IonLoading, IonPage, IonRow } from '@ionic/react';
-import { chevronDownOutline, personOutline } from 'ionicons/icons';
-import React, { useState } from 'react';
+import { IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonIcon, IonItem, IonItemDivider, IonLabel, IonList, IonPage, IonRow } from '@ionic/react';
+import { personOutline } from 'ionicons/icons';
+import { useState } from 'react';
 import { Header } from '../components/Header';
 import { ManageMember } from '../components/ManageMember';
 import { useStore } from '../stateContext/AuthContext';
@@ -63,14 +63,11 @@ export const Manage = () =>{
                                                     <div slot="end" style={{position:"relative"}}>
                                                         <div className="float-center-left">
                                                             <b style={{whiteSpace:"nowrap"}}>{record?.info?.name}</b>
-                                                            <div hidden id={`${record?.id}more`}>
-                                                                <div>{record?.info?.email}</div>
-                                                                <div>{record?.info?.number}</div>
-                                                                <div>{record?.info?.city}, {record?.info?.address}</div>
-                                                            </div>
+                                                            <div>{record?.info?.email}</div>
+                                                            <div>{record?.info?.number}</div>
+                                                            <div>{record?.info?.city}, {record?.info?.address}</div>
                                                         </div>
                                                     </div>
-                                                    <IonIcon class="float-right pad-l-r" onClick={(e)=>showMore(e,`${record?.id}more`)} icon={chevronDownOutline}/>
                                                 </IonList>
                                             )):
                                             <IonList class="item-list-container">

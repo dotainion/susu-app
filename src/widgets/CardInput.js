@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import CreditCardInput from 'react-credit-card-input';
 import 'styled-components';
 

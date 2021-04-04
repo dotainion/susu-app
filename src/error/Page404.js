@@ -1,5 +1,4 @@
-import { IonButton, IonContent, IonImg, IonItem, IonLabel, IonList, IonPage } from '@ionic/react';
-import React from 'react';
+import { IonButton, IonContent, IonImg, IonLabel, IonList, IonPage } from '@ionic/react';
 import { useHistory } from 'react-router';
 import { routes } from '../global/Routes';
 import brokenRobot from '../images/brokenRobot.jpg';

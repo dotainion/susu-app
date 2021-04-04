@@ -1,5 +1,4 @@
-import { IonButton, IonContent, IonIcon, IonItem, IonPage } from '@ionic/react';
-import React from 'react';
+import { IonButton, IonContent, IonItem, IonPage } from '@ionic/react';
 
 
 

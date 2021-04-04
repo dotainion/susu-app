@@ -1,6 +1,6 @@
-import { IonButton, IonButtons, IonCard, IonCardContent, IonContent, IonHeader, IonIcon, IonImg, IonInput, IonItem, IonItemDivider, IonLabel, IonList, IonMenuButton, IonModal, IonPopover, IonThumbnail, IonTitle, IonToolbar } from '@ionic/react';
-import { closeOutline, ellipsisVerticalOutline, gridOutline, homeOutline } from 'ionicons/icons';
-import React, { useRef, useState } from 'react';
+import { IonButtons, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonMenuButton, IonTitle, IonToolbar } from '@ionic/react';
+import { ellipsisVerticalOutline, gridOutline } from 'ionicons/icons';
+import { useState } from 'react';
 import { useHistory } from 'react-router';
 import { routes } from '../global/Routes';
 import { useStore } from '../stateContext/AuthContext';

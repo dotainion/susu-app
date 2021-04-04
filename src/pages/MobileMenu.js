@@ -1,6 +1,4 @@
 import { IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonIcon, IonItem, IonLabel, IonList, IonPage, IonRow } from '@ionic/react';
-import { constructOutline, settingsOutline } from 'ionicons/icons';
-import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import { Header } from '../components/Header';
 import { pages } from '../components/Menu';

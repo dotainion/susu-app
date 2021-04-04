@@ -1,6 +1,6 @@
 import { IonButton, IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonIcon, IonInput, IonItem, IonItemDivider, IonLabel, IonList, IonPage, IonPopover, IonRow } from '@ionic/react';
 import { searchOutline } from 'ionicons/icons';
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Header } from '../components/Header';
 import { getSusuAccounts, sendRequest } from '../database/FirestoreDb';
 import { useStore } from '../stateContext/AuthContext';

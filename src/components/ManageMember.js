@@ -1,6 +1,6 @@
-import { IonButton, IonCardContent, IonContent, IonIcon, IonInput, IonItem, IonItemDivider, IonLabel, IonList, IonModal, useIonViewWillEnter } from '@ionic/react';
+import { IonButton, IonCardContent, IonContent, IonIcon, IonItem, IonItemDivider, IonLabel, IonList, IonModal } from '@ionic/react';
 import { closeOutline } from 'ionicons/icons';
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { updateSusuMembers } from '../database/FirestoreDb';
 import { useStore } from '../stateContext/AuthContext';
 import { tools } from '../tools/Tools';

@@ -1,11 +1,9 @@
-import { IonAlert, IonButton, IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonIcon, IonItem, IonItemDivider, IonLabel, IonList, IonPage, IonPopover, IonRow } from '@ionic/react';
-import { constructOutline, settingsOutline } from 'ionicons/icons';
-import React, { useEffect, useRef, useState } from 'react';
+import { IonAlert, IonButton, IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonItem, IonItemDivider, IonLabel, IonList, IonPage, IonRow } from '@ionic/react';
+import { useRef, useState } from 'react';
 import { Header } from '../components/Header';
 import { routes } from '../global/Routes';
 import { useStore } from '../stateContext/AuthContext';
 import { tools } from '../tools/Tools';
-import { ItemInput } from '../widgets/ItemInput';
 import { Payments } from '../widgets/Payments';
 
 

@@ -1,7 +1,6 @@
-import { IonButton, IonCard, IonCardContent, IonCheckbox, IonCol, IonContent, IonGrid, IonInput, IonItem, IonLabel, IonList, IonPage, IonRow, useIonViewDidEnter, useIonViewWillEnter } from '@ionic/react';
-import React, { useEffect, useRef, useState } from 'react';
+import { IonButton, IonCard, IonCardContent, IonCheckbox, IonCol, IonContent, IonGrid, IonInput, IonItem, IonLabel, IonList, IonPage, IonRow } from '@ionic/react';
+import { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router';
-import { rememberCredsDb } from '../database/FirestoreDb';
 import { routes } from '../global/Routes';
 import { useStore } from '../stateContext/AuthContext';
 import { tools } from '../tools/Tools';

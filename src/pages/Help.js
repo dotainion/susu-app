@@ -1,5 +1,5 @@
-import { IonButton, IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonIcon, IonItem, IonLabel, IonList, IonPage, IonRow } from '@ionic/react';
-import { addOutline, constructOutline, settingsOutline } from 'ionicons/icons';
+import { IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonIcon, IonItem, IonLabel, IonList, IonPage, IonRow } from '@ionic/react';
+import { addOutline } from 'ionicons/icons';
 import React, { useState } from 'react';
 import { Header } from '../components/Header';
 
