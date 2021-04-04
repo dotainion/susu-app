@@ -54,7 +54,7 @@ export const CardInput = ({cardRef, label, color, onError}) =>{
                     color: color
                 }}
                 fieldStyle={{
-                    border: "1px solid dodgerblue",
+                    border: "1px solid #428cff",
                 }}
                 onError={()=>onError?.(true)}
             />

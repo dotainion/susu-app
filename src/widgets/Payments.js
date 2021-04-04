@@ -1,10 +1,13 @@
-import { IonButton, IonCardContent, IonIcon, IonItem, IonList } from '@ionic/react';
+import { IonButton, IonCardContent, IonIcon, IonItem, IonList, IonSelect } from '@ionic/react';
+import { getStates } from 'country-state-picker';
 import { add, car, card, closeOutline } from 'ionicons/icons';
 import React, { useEffect, useRef, useState } from 'react';
 import { useStore } from '../stateContext/AuthContext';
 import { tools } from '../tools/Tools';
 import { CardInput } from './CardInput';
 import { ItemInput } from './ItemInput';
+import { ItemSelect } from './ItemSelect';
+import { ItemSelectOption } from './ItemSelectOption';
 
 
 export const Payments = ({record, isOpen, onClose, onSubmit}) =>{
@@ -23,10 +26,12 @@ export const Payments = ({record, isOpen, onClose, onSubmit}) =>{
         refObject.style.color = "red";
         refObject.style.border = "1px solid red";
     }
+
     const resetError = (refObject) =>{
-        refObject.style.color = "#428cff";//#428cff
+        refObject.style.color = "#428cff";
         refObject.style.border = "1px solid #428cff";
     }
+
     const isValidated = () =>{
         let ISVALID = true;
         if (!nameRef.current.value){
@@ -84,6 +89,7 @@ export const Payments = ({record, isOpen, onClose, onSubmit}) =>{
         cityRef.current.value = tools.capitalize(user?.city);
         addressRef.current.value = tools.capitalize(user?.address);
     },[]);
+
     return(
         <IonList hidden={!isOpen} className="backdrop backdrop-color">
             <IonList onClick={(e)=>e.stopPropagation()} class="floating-center pay-card">
@@ -94,11 +100,10 @@ export const Payments = ({record, isOpen, onClose, onSubmit}) =>{
                     </IonList>
                     <ItemInput inputRef={nameRef} onChange={()=>resetError(nameRef.current)} type="text" label="Card Holder Name" color="#428cff" placeholder="Enter card holder name"/>
                     <ItemInput inputRef={emailRef} onChange={()=>resetError(emailRef.current)} type="email" label="Email" color="#428cff" placeholder="Enter email"/>
-                    <ItemInput inputRef={numberRef} onChange={()=>resetError(numberRef.current)} type="number" label="Phone Number" color="#428cff" placeholder="Enter phone number"/>
-                    <ItemInput inputRef={cityRef} onChange={()=>resetError(cityRef.current)} type="text" label="City" color="#428cff" placeholder="Enter city"/>
+                    <ItemInput inputRef={numberRef} onChange={()=>resetError(numberRef.current)} type="number" label="Phone Number" color="#428cff" placeholder="Enter phone number"/>                    
+                    <ItemSelectOption inputRef={cityRef} onChange={()=>resetError(cityRef.current)} label="City" color="#428cff" options={getStates("gd")} style={{padding:"9px"}}/>
                     <ItemInput inputRef={addressRef} onChange={()=>resetError(addressRef.current)} type="text" label="Address" color="#428cff" placeholder="Enter address"/>
                     <CardInput cardRef={cardRef} label="Card Number" color="#428cff" onError={(isvalid)=>setIsCardError(isvalid)}/>
-                    
                     <IonItem>
                         <IonButton fill="outline" onClick={submitPaymentDetail} slot="end">Pay ${record?.costPerMonth}</IonButton>
                     </IonItem>

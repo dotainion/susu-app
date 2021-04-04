@@ -182,8 +182,8 @@ export const rememberCredsDb = async(data, uid) =>{
 export const joinSusuByLink = async(linkId, myData) =>{
     try{
         let records = await getData(collection.groups,linkId);
-        for (let r of records?.members || []){
-            if (r?.id === linkId) return false;//already a member
+        for (let mbr of records?.members || []){
+            if (mbr?.id === myData?.id) return false;//already a member
         }
         let newRec = {members: records?.members || []};
         const myId = myData?.id;

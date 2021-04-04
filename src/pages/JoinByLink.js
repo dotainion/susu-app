@@ -14,6 +14,7 @@ export const JoinByLink = () =>{
 
     const history = useHistory();
 
+    const [error, setError] = useState("");
     const [joinById, setJoinById] = useState("");
     const [joinByLink, setJoinByLink] = useState({
         susuName:"",
@@ -23,7 +24,8 @@ export const JoinByLink = () =>{
     });
 
     const join = async() =>{
-        await joinSusuByLink(joinById, user);
+        const response = await joinSusuByLink(joinById, user);
+        if (!response) return setError("Already a mumber");
         await initSusuGroups();
         tools.alert(true,"You are now part of this group");
         history.push(routes?.myAccount);
@@ -60,7 +62,8 @@ export const JoinByLink = () =>{
                                         <IonItem class="sub-header" style={{fontSize:"18px"}} lines="full">
                                             <IonLabel>Join this susu by link</IonLabel>
                                         </IonItem>
-                                        <div className="tag-container" style={{fontSize:"18px",color:"black",padding:"10px"}}>
+                                        <div className="error">{error}</div>
+                                        <div className="tag-container" style={{fontSize:"15px",color:"black",padding:"10px"}}>
                                             <div>
                                                 <div className="text-nowrap pad-l-r">Susu Name</div>
                                                 <div className="text-nowrap pad-l-r">Cost Per Month</div>

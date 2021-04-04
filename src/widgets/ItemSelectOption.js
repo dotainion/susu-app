@@ -3,15 +3,15 @@ import React, { useEffect, useState } from 'react';
 
 
 
-export const ItemSelectOption = ({options, label, inputRef}) =>{
+export const ItemSelectOption = ({options, label, inputRef, onChange, color, style}) =>{
     return(
-        <div className="input-settings-container">
+        <div className="input-settings-container" style={{color:color}}>
             <div>{label}</div>
             <div className="parent-select">
-                <select ref={inputRef} className="input-settings input-opt">
+                <select ref={inputRef} onChange={onChange} style={{...style,border:`1px solid ${color}`}}className="input-settings input-opt">
                     <option hidden defaultChecked>{inputRef?.current?.value}</option>
                     {
-                        options.map((option, key)=>(
+                        options?.map?.((option, key)=>(
                             <option key={key}>{option}</option>
                         ))
                     }

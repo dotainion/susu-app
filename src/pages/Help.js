@@ -128,11 +128,6 @@ export const Help = () =>{
         else element.hidden = true;
     }
 
-    const tabToggle = () =>{
-        if (tab) setTab(false);
-        else setTab(true);
-    }
-
     return(
         <IonPage className="page">
             <Header/>
@@ -149,42 +144,38 @@ export const Help = () =>{
                                         <IonLabel>Fine what you need to know</IonLabel>
                                     </IonList>
                                     <div className="tab-bar">
-                                        <label onClick={tabToggle} style={{backgroundColor: !tab && "white", color: !tab && "rgb(27, 87, 177)"}} className="pointer">FAQ's</label>
-                                        <label onClick={tabToggle} style={{backgroundColor: tab && "white", color: tab && "rgb(27, 87, 177)"}} className="pointer">Help</label>
+                                        <label onClick={()=>setTab(false)} style={{backgroundColor: !tab && "white", color: !tab && "rgb(27, 87, 177)"}} className="pointer">FAQ's</label>
+                                        <label onClick={()=>setTab(true)} style={{backgroundColor: tab && "white", color: tab && "rgb(27, 87, 177)"}} className="pointer">Help</label>
                                     </div>
                                     {/* this is for FAQ's*/}
                                     <IonList hidden={tab}>
-                                        {
-                                            questons.map((faq, key)=>(
-                                                <div className="question-and-answers" key={key}>
-                                                    <div onClick={()=>toggleFAQs(`${faq.FAQ}-/-expan`)}><IonIcon icon={addOutline}/>{faq.FAQ}</div>
-                                                    <span hidden id={`${faq.FAQ}-/-expan`}>
-                                                        <p>{faq.answer}</p>
-                                                        <ul>
-                                                            {faq.list.map((list, key)=>(
-                                                                <li key={key}>{list}</li>
-                                                            ))}
-                                                        </ul>
-                                                    </span>
-                                                </div>
-                                            ))
-                                        }
+                                        {questons.map((faq, key)=>(
+                                            <div className="question-and-answers" key={key}>
+                                                <div onClick={()=>toggleFAQs(`${faq.FAQ}-/-expan`)}><IonIcon icon={addOutline}/>{faq.FAQ}</div>
+                                                <span hidden id={`${faq.FAQ}-/-expan`}>
+                                                    <p>{faq.answer}</p>
+                                                    <ul>
+                                                        {faq.list.map((list, key)=>(
+                                                            <li key={key}>{list}</li>
+                                                        ))}
+                                                    </ul>
+                                                </span>
+                                            </div>
+                                        ))}
                                     </IonList>
                                     {/* this is for help*/}
                                     <IonList hidden={!tab}>
-                                        {
-                                            helps.map((howTo, key)=>(
-                                                <div className="question-and-answers" key={key}>
-                                                    <div style={{color:"dodgerblue",backgroundColor:"white"}}>{howTo.question}</div>
-                                                    <p style={{color:"dodgerblue",backgroundColor:"white"}}>{howTo.answer}</p>
-                                                    <ul>
-                                                        {howTo.list.map((ans, key)=>(
-                                                            <li key={key}>{ans}</li>
-                                                        ))}
-                                                    </ul>
-                                                </div>
-                                            ))
-                                        }
+                                        {helps.map((howTo, key)=>(
+                                            <div className="question-and-answers" key={key}>
+                                                <div style={{color:"dodgerblue",backgroundColor:"white"}}>{howTo.question}</div>
+                                                <p style={{color:"dodgerblue",backgroundColor:"white"}}>{howTo.answer}</p>
+                                                <ul>
+                                                    {howTo.list.map((ans, key)=>(
+                                                        <li key={key}>{ans}</li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        ))}
                                     </IonList>
                                 </IonCardContent>
                             </IonCard>
