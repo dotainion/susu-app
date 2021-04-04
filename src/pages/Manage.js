@@ -9,22 +9,13 @@ import { useStore } from '../stateContext/AuthContext';
 
 
 export const Manage = () =>{
-    const { user, susuMembers, initSusuMembers } = useStore();
-    const [error, setError] = useState("");
-    const [success, setSuccess] = useState("");
+    const { user, susuMembers } = useStore();
     const [showModal, setShowModal] = useState(false);
     const [modalRecord, setModalRecord] = useState({});
 
     const management = (dataRecord) =>{
         setModalRecord(dataRecord);
         setShowModal(true);
-    }
-
-    const showMore = (event,id) =>{
-        event.stopPropagation();
-        let element  = document.getElementById(id);
-        if (element.hidden) element.hidden = false;
-        else element.hidden = true;
     }
 
     return(
@@ -49,20 +40,18 @@ export const Manage = () =>{
                                     <IonList class="sub-header">
                                         <IonLabel>Manage my susu</IonLabel>
                                     </IonList>
-                                    <div className="error">{error}</div>
-                                    <div className="success">{success}</div>
                                     <IonItemDivider>Members</IonItemDivider>
                                     <IonList>
                                         {
                                             susuMembers.length?
                                             susuMembers.map((record, key)=>(
                                                 <IonList class="item-list-container pointer flexed" onClick={()=>management(record)} key={key}>
-                                                    <IonCard class="round" style={{margin:"0px"}}>
+                                                    <IonCard class="round" style={{margin:"0px",color:"dodgerblue"}}>
                                                         <IonIcon class="round-inner" icon={personOutline}/>
                                                     </IonCard>
                                                     <div slot="end" style={{position:"relative"}}>
                                                         <div className="float-center-left">
-                                                            <b style={{whiteSpace:"nowrap"}}>{record?.info?.name}</b>
+                                                            <b style={{whiteSpace:"nowrap",color:"dodgerblue"}}>{record?.info?.name}</b>
                                                             <div>{record?.info?.email}</div>
                                                             <div>{record?.info?.number}</div>
                                                             <div>{record?.info?.city}, {record?.info?.address}</div>
