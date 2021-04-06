@@ -202,10 +202,35 @@
 .close:hover{
     color: red;
 }
-.welcome-logo{
-    width: 80%;
-    margin-left: 50%;
-    transform: translateX(-50%);
+.welcome-logo-container{
+    position: relative;
+    margin-top: 100px;
+    width: 250px;
+    height: 250px;
+    padding: 15px;
+    border-radius: 50%;
+    user-select: none;
+    background-color: blue;
+    box-shadow: 10px 10px 30px black;
+}
+.welcome-logo-sub{
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: 10px 10px 30px black;
+}
+.welcome-logo-mini-sub{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: 10px 10px 30px black;
+}
+.welcome-logo-text{
+    color: dodgerblue;
+    text-align: center;
 }
 .mini-list-scroll{
     max-height: 400px;
