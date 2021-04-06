@@ -1,4 +1,4 @@
-import { constructOutline, helpOutline, informationOutline, peopleOutline, personOutline, settingsOutline, shareSocialOutline, stopwatchOutline } from 'ionicons/icons';
+import { cardOutline, constructOutline, helpOutline, informationOutline, peopleOutline, personOutline, settingsOutline, shareSocialOutline, stopwatchOutline } from 'ionicons/icons';
 import { routes } from '../global/Routes';
 
 export const content = {
@@ -33,6 +33,11 @@ export const content = {
             icon: shareSocialOutline,
             iconColor: "",
             url: onShare => onShare?.()
+        },{
+            title: "Money Transfer",
+            icon: cardOutline,
+            iconColor: "",
+            url: routes.moneyTransfer
         },{
             title: "Help & FAQ's",
             icon: helpOutline,

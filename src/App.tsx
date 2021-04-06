@@ -42,6 +42,7 @@ import { Help } from './pages/Help';
 import { MobileMenu } from './pages/MobileMenu';
 import { Test } from './test/Test';
 import { JoinByLink } from './pages/JoinByLink';
+import { MoneyTransfer } from './pages/MoneyTransfer';
 
 
 
@@ -86,6 +87,9 @@ const App: React.FC = () => {
                 </Route>
                 <Route exact path={routes.test}>
                   <AuthValidate component={<Test />}/>
+                </Route>
+                <Route exact path={routes.moneyTransfer}>
+                  <AuthValidate component={<MoneyTransfer />}/>
                 </Route>
                 <Route render={()=><Page404 />}/>
               </Switch>
